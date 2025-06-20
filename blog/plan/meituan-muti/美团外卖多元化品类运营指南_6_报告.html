@@ -1,0 +1,883 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美团外卖多元化品类运营指南 - 从选品到盈利的全方位攻略</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script src="https://gw.alipayobjects.com/os/lib/echarts/5.4.3/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #FFA500;
+            --accent-color: #FF4500;
+            --text-color: #333333;
+            --light-bg: #F8F9FA;
+            --dark-bg: #2C3E50;
+            --success-color: #28A745;
+            --warning-color: #FFC107;
+            --danger-color: #DC3545;
+            --info-color: #17A2B8;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link {
+            position: relative;
+            margin: 0 0.75rem;
+            padding: 0.5rem 5px;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--accent-color);
+        }
+        
+        .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: var(--dark-bg);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(255, 215, 0, 0.25);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 215, 0, 0.3);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(255, 215, 0, 0.25);
+        }
+        
+        .stat-card {
+            border-radius: 12px;
+            padding: 1.5rem;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+        }
+        
+        .footer {
+            background-color: var(--dark-bg);
+            color: white;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        .mouse-cursor-gradient-tracking {
+            position: relative;
+            background: #7983ff;
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .mouse-cursor-gradient-tracking::before {
+            --size: 0;
+            content: '';
+            position: absolute;
+            left: var(--x);
+            top: var(--y);
+            width: var(--size);
+            height: var(--size);
+            background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.3), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.2s ease, height 0.2s ease;
+        }
+        
+        .mouse-cursor-gradient-tracking:hover::before {
+            --size: 200px;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.8), rgba(255, 69, 0, 0.8)), url('https://img4.pconline.com.cn/pconline/images/best/20250411/25325157.png?wx_fmt=png&from=appmsg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .category-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar fixed w-full z-50 px-4 py-3" id="navbar">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="美团外卖多元化品类运营指南_0_报告.html" class="text-2xl font-bold flex items-center">
+                <span class="text-yellow-500"><i class="fas fa-utensils mr-2"></i>美团外卖</span>多元化品类运营指南
+            </a>
+            <div class="hidden md:flex space-x-1">
+                
+            </div>
+            <button class="md:hidden focus:outline-none" id="menu-toggle">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white w-full absolute left-0 mt-3 py-2 shadow-lg" id="mobile-menu">
+            <a href="美团外卖多元化品类运营指南_1_报告.html" class="block px-4 py-2 hover:bg-gray-100">市场概况</a>
+            <a href="美团外卖多元化品类运营指南_2_报告.html" class="block px-4 py-2 hover:bg-gray-100">超市便利店</a>
+            <a href="美团外卖多元化品类运营指南_3_报告.html" class="block px-4 py-2 hover:bg-gray-100">宠物用品店</a>
+            <a href="美团外卖多元化品类运营指南_4_报告.html" class="block px-4 py-2 hover:bg-gray-100">情趣用品店</a>
+            <a href="美团外卖多元化品类运营指南_5_报告.html" class="block px-4 py-2 hover:bg-gray-100">文创文玩店</a>
+            <a href="美团外卖多元化品类运营指南_6_报告.html" class="block px-4 py-2 bg-gray-100">数码电器店</a>
+            <a href="美团外卖多元化品类运营指南_7_报告.html" class="block px-4 py-2 hover:bg-gray-100">生鲜店</a>
+            <a href="美团外卖多元化品类运营指南_8_报告.html" class="block px-4 py-2 hover:bg-gray-100">数据分析</a>
+            <a href="美团外卖多元化品类运营指南_9_报告.html" class="block px-4 py-2 hover:bg-gray-100">营销推广</a>
+            <a href="美团外卖多元化品类运营指南_10_报告.html" class="block px-4 py-2 hover:bg-gray-100">风险管理</a>
+            <a href="美团外卖多元化品类运营指南_11_报告.html" class="block px-4 py-2 hover:bg-gray-100">成本控制</a>
+            <a href="美团外卖多元化品类运营指南_12_报告.html" class="block px-4 py-2 hover:bg-gray-100">未来趋势</a>
+            <a href="美团外卖多元化品类运营指南_13_报告.html" class="block px-4 py-2 hover:bg-gray-100">品类整合</a>
+        </div>
+        <!-- 二级导航栏 -->
+        <div class="container mx-auto hidden md:flex justify-center mt-2">
+            <div class="flex space-x-1">
+                <a href="美团外卖多元化品类运营指南_1_报告.html" class="nav-link">市场概况</a>
+                <a href="美团外卖多元化品类运营指南_2_报告.html" class="nav-link">超市便利店</a>
+                <a href="美团外卖多元化品类运营指南_3_报告.html" class="nav-link">宠物用品店</a>
+                <a href="美团外卖多元化品类运营指南_4_报告.html" class="nav-link">情趣用品店</a>
+                <a href="美团外卖多元化品类运营指南_5_报告.html" class="nav-link">文创文玩店</a>
+                <a href="美团外卖多元化品类运营指南_6_报告.html" class="nav-link bg-red-100">数码电器店</a>
+                <a href="美团外卖多元化品类运营指南_7_报告.html" class="nav-link">生鲜店</a>
+                <a href="美团外卖多元化品类运营指南_8_报告.html" class="nav-link">数据分析</a>
+                <a href="美团外卖多元化品类运营指南_9_报告.html" class="nav-link">营销推广</a>
+                <a href="美团外卖多元化品类运营指南_10_报告.html" class="nav-link">风险管理</a>
+                <a href="美团外卖多元化品类运营指南_11_报告.html" class="nav-link">成本控制</a>
+                <a href="美团外卖多元化品类运营指南_12_报告.html" class="nav-link">未来趋势</a>
+                <a href="美团外卖多元化品类运营指南_13_报告.html" class="nav-link">品类整合</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="py-20">
+<section id="digital-appliance" class="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-12 text-center section-title">数码电器店运营指南</h2>
+        
+        <!-- 市场概况 -->
+        <div class="mb-16">
+            <div class="flex flex-col md:flex-row items-center mb-10">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-700">数码电器即时零售市场爆发</h3>
+                    <p class="text-gray-700 mb-4">数码电器即时零售正迎来爆发式增长，美团闪购数据显示，预计2021-2026年，数码电器即时零售行业年均复合增长率达<span class="text-red-600 font-bold text-xl">68.5%</span>，2026年市场规模将超千亿元。</p>
+                    <p class="text-gray-700 mb-4">得益于即时零售渠道"年轻化、数字化、前景广"等优势，消费电子品牌商和零售商正加速布局即时零售渠道，通过美团闪购等平台实现"30分钟万物到家"的服务承诺。</p>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <p class="font-semibold text-blue-800">美团闪购合作规模：</p>
+                        <ul class="list-disc pl-5 text-gray-700">
+                            <li>超5600家大型连锁零售商</li>
+                            <li>41万本地小商户</li>
+                            <li>570家品牌商</li>
+                            <li>全国布局超3万个闪电仓</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div id="market-growth-chart" class="w-full h-80 bg-white rounded-lg shadow-lg p-4"></div>
+                </div>
+            </div>
+            
+            <!-- 消费者需求与特点 -->
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-10">
+                <h3 class="text-2xl font-bold mb-6 text-blue-700">消费者需求与特点</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+                        <div class="feature-icon bg-blue-500 mx-auto">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-3 text-center">即时性需求</h4>
+                        <p class="text-gray-700">超过50%的Z世代消费者希望当天甚至半天内收到商品，7%的消费者要求2小时内送达，数码电器即时零售满足了消费者对"即时满足"的需求。</p>
+                    </div>
+                    <div class="card p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+                        <div class="feature-icon bg-blue-500 mx-auto">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-3 text-center">夜间消费崛起</h4>
+                        <p class="text-gray-700">美团闪购夜间订单占比持续提升，达到26%，数码电器产品如充电器、数据线等成为夜间消费的热门品类。</p>
+                    </div>
+                    <div class="card p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+                        <div class="feature-icon bg-blue-500 mx-auto">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-3 text-center">场景多元化</h4>
+                        <p class="text-gray-700">消费场景从住宅区扩展到办公区、学校、医院等多元场景，数码电器即时零售满足了不同场景下的紧急需求。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 运营策略 -->
+        <div class="mb-16">
+            <h3 class="text-2xl font-bold mb-8 text-blue-700">数码电器店运营策略</h3>
+            
+            <!-- 科学选品策略 -->
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-10">
+                <h4 class="text-xl font-semibold mb-6">科学选品策略</h4>
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 pr-0 md:pr-8">
+                        <div id="product-category-chart" class="w-full h-80"></div>
+                    </div>
+                    <div class="md:w-1/2 mt-8 md:mt-0">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h5 class="font-semibold text-lg mb-3">核心品类布局</h5>
+                            <ul class="list-disc pl-5 text-gray-700 mb-6">
+                                <li><span class="font-medium">手机配件</span>：充电器、数据线、手机壳、贴膜等（占比25-30%）</li>
+                                <li><span class="font-medium">小型数码产品</span>：耳机、移动电源、智能手环等（占比20-25%）</li>
+                                <li><span class="font-medium">电脑周边</span>：鼠标、键盘、U盘、硬盘等（占比15-20%）</li>
+                                <li><span class="font-medium">智能家居</span>：智能音箱、智能灯泡、智能插座等（占比10-15%）</li>
+                                <li><span class="font-medium">小型家电</span>：加湿器、电风扇、小型吸尘器等（占比10-15%）</li>
+                            </ul>
+                            <h5 class="font-semibold text-lg mb-3">差异化选品</h5>
+                            <ul class="list-disc pl-5 text-gray-700">
+                                <li>高端品牌授权产品</li>
+                                <li>新品首发与限量版产品</li>
+                                <li>本地特色数码配件</li>
+                                <li>季节性数码产品</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 合作模式与供应链 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h4 class="text-xl font-semibold mb-4">合作模式</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5 class="font-semibold">品牌直供模式</h5>
+                            <p class="text-gray-700">与品牌商直接合作，获取一手货源和价格优势，如美团闪购与品胜达成战略合作，在470余城7000余店开展合作。</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5 class="font-semibold">连锁零售合作</h5>
+                            <p class="text-gray-700">与苏宁易购等连锁零售商合作，首批175城市600余家苏宁易购门店已入驻美团，实现线下门店的线上化。</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5 class="font-semibold">闪电仓模式</h5>
+                            <p class="text-gray-700">在高需求区域设立前置仓库，储备热销数码产品，实现30分钟极速配送，提升用户体验。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h4 class="text-xl font-semibold mb-4">供应链管理</h4>
+                    <div class="mb-6">
+                        <h5 class="font-semibold mb-2">智能库存管理</h5>
+                        <p class="text-gray-700 mb-4">利用美团数据分析工具，实时监控库存水平，设置安全库存，实现智能补货提醒，避免缺货和积压。</p>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <p class="font-medium text-blue-800">库存优化建议：</p>
+                            <ul class="list-disc pl-5 text-gray-700">
+                                <li>高频消耗品（充电线、耳机等）保持2-3周库存</li>
+                                <li>中频产品（移动电源、键鼠等）保持1-2周库存</li>
+                                <li>低频高值产品（智能设备等）采用按需调货模式</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold mb-2">品质保证体系</h5>
+                        <p class="text-gray-700">建立严格的产品质检流程，确保所有数码产品为正品，避免假冒伪劣产品损害店铺信誉。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 营销推广策略 -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h4 class="text-xl font-semibold mb-6">营销推广策略</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+                        <div class="feature-icon bg-blue-500 mx-auto">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h5 class="text-lg font-semibold mb-3 text-center">场景化营销</h5>
+                        <p class="text-gray-700">针对不同使用场景设计产品组合，如"居家办公套装"、"旅行数码必备"、"学生数码装备"等，提高客单价。</p>
+                    </div>
+                    <div class="card p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+                        <div class="feature-icon bg-blue-500 mx-auto">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h5 class="text-lg font-semibold mb-3 text-center">节点营销</h5>
+                        <p class="text-gray-700">结合618、双11等电商节点，以及开学季、毕业季等特殊时期，推出针对性促销活动，如"超级国补周"等。</p>
+                    </div>
+                    <div class="card p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+                        <div class="feature-icon bg-blue-500 mx-auto">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h5 class="text-lg font-semibold mb-3 text-center">私域运营</h5>
+                        <p class="text-gray-700">建立数码产品用户社群，提供产品使用技巧、新品资讯等增值服务，提高用户粘性和复购率。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 售后服务与风险管理 -->
+        <div>
+            <h3 class="text-2xl font-bold mb-8 text-blue-700">售后服务与风险管理</h3>
+            
+            <!-- 专业售后服务 -->
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-10">
+                <h4 class="text-xl font-semibold mb-6">专业售后服务体系</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                            <h5 class="font-semibold text-lg mb-3">售后服务标准</h5>
+                            <ul class="list-disc pl-5 text-gray-700">
+                                <li><span class="font-medium">7天无理由退换</span>：确保消费者购物无忧</li>
+                                <li><span class="font-medium">15天质量问题换新</span>：快速解决产品质量问题</li>
+                                <li><span class="font-medium">专业技术支持</span>：提供产品使用指导和故障排查</li>
+                                <li><span class="font-medium">上门安装服务</span>：针对大型家电提供专业安装</li>
+                                <li><span class="font-medium">延长保修服务</span>：提供额外的保修期选项</li>
+                            </ul>
+                        </div>
+                        <div class="bg-yellow-50 p-6 rounded-lg">
+                            <h5 class="font-semibold text-lg mb-3">售后服务提升策略</h5>
+                            <ul class="list-disc pl-5 text-gray-700">
+                                <li>建立专业的售后服务团队，提供技术支持和问题解决</li>
+                                <li>与品牌售后服务中心合作，提供官方售后保障</li>
+                                <li>开发数码产品使用教程和常见问题解答库</li>
+                                <li>设立客户满意度回访机制，持续优化服务体验</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="service-satisfaction-chart" class="w-full h-80 bg-white rounded-lg shadow-md p-4"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 风险管理 -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h4 class="text-xl font-semibold mb-6">风险管理与应对策略</h4>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead>
+                            <tr>
+                                <th class="py-3 px-4 bg-blue-100 text-left text-blue-800 font-semibold">风险类型</th>
+                                <th class="py-3 px-4 bg-blue-100 text-left text-blue-800 font-semibold">风险描述</th>
+                                <th class="py-3 px-4 bg-blue-100 text-left text-blue-800 font-semibold">应对策略</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="py-3 px-4 font-medium">产品质量风险</td>
+                                <td class="py-3 px-4">数码产品质量问题、功能缺陷或兼容性问题</td>
+                                <td class="py-3 px-4">
+                                    <ul class="list-disc pl-5 text-gray-700">
+                                        <li>严格筛选供应商，确保产品质量</li>
+                                        <li>建立产品质检流程，杜绝假冒伪劣产品</li>
+                                        <li>提供详细的产品参数和兼容性说明</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4 font-medium">配送损坏风险</td>
+                                <td class="py-3 px-4">数码产品在配送过程中损坏或受潮</td>
+                                <td class="py-3 px-4">
+                                    <ul class="list-disc pl-5 text-gray-700">
+                                        <li>使用专业的防震包装材料</li>
+                                        <li>为贵重产品购买运输保险</li>
+                                        <li>培训配送人员正确搬运电子产品</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4 font-medium">售后服务风险</td>
+                                <td class="py-3 px-4">安装调试问题、技术支持不足、售后响应慢</td>
+                                <td class="py-3 px-4">
+                                    <ul class="list-disc pl-5 text-gray-700">
+                                        <li>建立专业的售后服务团队</li>
+                                        <li>与品牌售后服务中心合作</li>
+                                        <li>设立24小时客服热线</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-medium">库存管理风险</td>
+                                <td class="py-3 px-4">数码产品更新换代快，库存积压或缺货</td>
+                                <td class="py-3 px-4">
+                                    <ul class="list-disc pl-5 text-gray-700">
+                                        <li>使用数据分析工具预测销售趋势</li>
+                                        <li>采用小批量多频次进货策略</li>
+                                        <li>建立库存预警机制</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 市场增长趋势图表
+        document.addEventListener('DOMContentLoaded', function() {
+            const marketGrowthChart = echarts.init(document.getElementById('market-growth-chart'));
+            
+            const marketGrowthOption = {
+                title: {
+                    text: '数码电器即时零售市场规模预测',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: '{b}: {c}亿元'
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['2021', '2022', '2023', '2024', '2025', '2026'],
+                    axisLabel: {
+                        rotate: 0
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '市场规模（亿元）'
+                },
+                series: [
+                    {
+                        data: [180, 303, 510, 680, 850, 1050],
+                        type: 'line',
+                        smooth: true,
+                        lineStyle: {
+                            width: 4,
+                            color: '#3B82F6'
+                        },
+                        itemStyle: {
+                            color: '#3B82F6'
+                        },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                {
+                                    offset: 0,
+                                    color: 'rgba(59, 130, 246, 0.5)'
+                                },
+                                {
+                                    offset: 1,
+                                    color: 'rgba(59, 130, 246, 0.1)'
+                                }
+                            ])
+                        },
+                        markPoint: {
+                            data: [
+                                { type: 'max', name: '最大值' }
+                            ]
+                        }
+                    }
+                ]
+            };
+            
+            marketGrowthChart.setOption(marketGrowthOption);
+            
+            // 产品品类分布图表
+            const productCategoryChart = echarts.init(document.getElementById('product-category-chart'));
+            
+            const productCategoryOption = {
+                title: {
+                    text: '数码电器店品类分布',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{b}: {c}%'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                },
+                series: [
+                    {
+                        name: '品类占比',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 10,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                fontSize: '18',
+                                fontWeight: 'bold'
+                            }
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        data: [
+                            { value: 28, name: '手机配件' },
+                            { value: 22, name: '小型数码产品' },
+                            { value: 18, name: '电脑周边' },
+                            { value: 12, name: '智能家居' },
+                            { value: 12, name: '小型家电' },
+                            { value: 8, name: '其他' }
+                        ]
+                    }
+                ]
+            };
+            
+            productCategoryChart.setOption(productCategoryOption);
+            
+            // 服务满意度图表
+            const serviceSatisfactionChart = echarts.init(document.getElementById('service-satisfaction-chart'));
+            
+            const serviceSatisfactionOption = {
+                title: {
+                    text: '售后服务对用户满意度的影响',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['有专业售后服务', '无专业售后服务'],
+                    bottom: '0%'
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '15%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value',
+                    boundaryGap: [0, 0.01],
+                    max: 100
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['用户满意度', '复购率', '好评率', '客单价提升']
+                },
+                series: [
+                    {
+                        name: '有专业售后服务',
+                        type: 'bar',
+                        data: [92, 45, 88, 35],
+                        itemStyle: {
+                            color: '#3B82F6'
+                        }
+                    },
+                    {
+                        name: '无专业售后服务',
+                        type: 'bar',
+                        data: [65, 18, 60, 12],
+                        itemStyle: {
+                            color: '#9CA3AF'
+                        }
+                    }
+                ]
+            };
+            
+            serviceSatisfactionChart.setOption(serviceSatisfactionOption);
+            
+            // 响应窗口大小变化
+            window.addEventListener('resize', function() {
+                marketGrowthChart.resize();
+                productCategoryChart.resize();
+                serviceSatisfactionChart.resize();
+            });
+        });
+    </script>
+</section>
+</main>
+
+<!-- 页脚 -->
+<footer class="footer py-10">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">美团外卖多元化品类运营指南</h3>
+                <p class="text-gray-300 mb-4">
+                    为美团外卖商家提供全方位的多元化品类运营策略和实用建议，帮助您的外卖业务取得成功。
+                </p>
+                <div class="flex mt-4">
+                    <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-weibo"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-qq"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">品类导航</h3>
+                <ul class="space-y-2">
+                    <li><a href="美团外卖多元化品类运营指南_2_报告.html" class="text-gray-300 hover:text-white">超市便利店</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_3_报告.html" class="text-gray-300 hover:text-white">宠物用品店</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_4_报告.html" class="text-gray-300 hover:text-white">情趣用品店</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_5_报告.html" class="text-gray-300 hover:text-white">文创文玩店</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_6_报告.html" class="text-gray-300 hover:text-white">数码电器店</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_7_报告.html" class="text-gray-300 hover:text-white">生鲜店</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">运营指南</h3>
+                <ul class="space-y-2">
+                    <li><a href="美团外卖多元化品类运营指南_8_报告.html" class="text-gray-300 hover:text-white">数据分析</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_9_报告.html" class="text-gray-300 hover:text-white">营销推广</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_10_报告.html" class="text-gray-300 hover:text-white">风险管理</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_11_报告.html" class="text-gray-300 hover:text-white">成本控制</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_12_报告.html" class="text-gray-300 hover:text-white">未来趋势</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_13_报告.html" class="text-gray-300 hover:text-white">品类整合</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center"><i class="fas fa-envelope mr-2 text-yellow-500"></i> <a href="mailto:contact@example.com" class="text-gray-300 hover:text-white">contact@example.com</a></li>
+                    <li class="flex items-center"><i class="fas fa-phone mr-2 text-yellow-500"></i> <a href="tel:+8610000000000" class="text-gray-300 hover:text-white">+86 10000000000</a></li>
+                    <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-yellow-500"></i> <span class="text-gray-300">北京市朝阳区</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+            <p>&copy; 2025 美团外卖多元化品类运营指南. 保留所有权利.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+        // 导航栏背景变化
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 鼠标跟随效果
+    document.addEventListener('DOMContentLoaded', () => {
+        const el = document.querySelector('.mouse-cursor-gradient-tracking');
+        if (el) {
+            el.addEventListener('mousemove', e => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                el.style.setProperty('--x', `${x}px`);
+                el.style.setProperty('--y', `${y}px`);
+            });
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,3078 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超级个体规划 - 从自媒体到个人IP的全面发展路径</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script src="https://gw.alipayobjects.com/os/lib/echarts/5.4.3/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #10b981;
+            --accent-color: #8b5cf6;
+            --dark-color: #1f2937;
+            --light-color: #f9fafb;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
+        
+        .neomorphic {
+            border-radius: 16px;
+            background: #f0f0f3;
+            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 0.5rem;
+            height: 1rem;
+            width: 1rem;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            margin: 4rem auto;
+            width: 50%;
+        }
+        
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .custom-cursor {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="relative">
+    <div id="custom-cursor" class="custom-cursor hidden md:block"></div>
+    
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-90 backdrop-blur-md shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-indigo-600 flex items-center">
+                    <i class="fas fa-rocket mr-2"></i>
+                    <span>超级个体规划</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="#intro" class="text-gray-700 hover:text-indigo-600 transition-colors">概述</a>
+                    <a href="#media" class="text-gray-700 hover:text-indigo-600 transition-colors">自媒体创作</a>
+                    <a href="#community" class="text-gray-700 hover:text-indigo-600 transition-colors">社群电商</a>
+                    <a href="#freelance" class="text-gray-700 hover:text-indigo-600 transition-colors">接单工作</a>
+                    <a href="#physical" class="text-gray-700 hover:text-indigo-600 transition-colors">实体化路径</a>
+                    <a href="#integration" class="text-gray-700 hover:text-indigo-600 transition-colors">整合策略</a>
+                    <a href="#timeline" class="text-gray-700 hover:text-indigo-600 transition-colors">时间规划</a>
+                    <a href="#risks" class="text-gray-700 hover:text-indigo-600 transition-colors">风险应对</a>
+                </div>
+                
+                <button class="md:hidden text-gray-700" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-3 py-3">
+                    <a href="#intro" class="text-gray-700 hover:text-indigo-600 transition-colors">概述</a>
+                    <a href="#media" class="text-gray-700 hover:text-indigo-600 transition-colors">自媒体创作</a>
+                    <a href="#community" class="text-gray-700 hover:text-indigo-600 transition-colors">社群电商</a>
+                    <a href="#freelance" class="text-gray-700 hover:text-indigo-600 transition-colors">接单工作</a>
+                    <a href="#physical" class="text-gray-700 hover:text-indigo-600 transition-colors">实体化路径</a>
+                    <a href="#integration" class="text-gray-700 hover:text-indigo-600 transition-colors">整合策略</a>
+                    <a href="#timeline" class="text-gray-700 hover:text-indigo-600 transition-colors">时间规划</a>
+                    <a href="#risks" class="text-gray-700 hover:text-indigo-600 transition-colors">风险应对</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="pt-16">
+        <section id="intro" class="min-h-screen flex flex-col justify-center items-center py-20 relative overflow-hidden" data-section="intro">
+            <div class="absolute inset-0 hero-gradient opacity-10"></div>
+            
+            <!-- 视差背景元素 -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="parallax-layer" data-depth="0.2">
+                    <div class="absolute -right-20 top-20 w-64 h-64 rounded-full bg-blue-500 opacity-10 blur-3xl"></div>
+                </div>
+                <div class="parallax-layer" data-depth="0.4">
+                    <div class="absolute -left-32 top-40 w-96 h-96 rounded-full bg-purple-500 opacity-10 blur-3xl"></div>
+                </div>
+                <div class="parallax-layer" data-depth="0.3">
+                    <div class="absolute right-1/4 bottom-20 w-80 h-80 rounded-full bg-green-500 opacity-10 blur-3xl"></div>
+                </div>
+            </div>
+            
+            <div class="container mx-auto px-4 z-10">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+                        超级个体时代
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+                        从自媒体到个人IP的全面发展路径
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+                    <div class="glass-card p-8 rounded-xl hover-lift">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-indigo-100 text-indigo-600 mr-4">
+                                <i class="fas fa-lightbulb text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold">什么是超级个体？</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            超级个体是指那些能够通过多元化的技能和渠道，创造多重收入来源，实现职业自由和财务独立的个人。他们不再依赖单一的工作岗位或收入来源，而是通过自身能力的整合与放大，打造个人品牌和影响力。
+                        </p>
+                        <p class="text-gray-600">
+                            在2025年的数字经济时代，超级个体已成为一种新兴的职业发展模式，越来越多的人正在从传统职场转向这种更加灵活、自主的工作方式。
+                        </p>
+                    </div>
+                    
+                    <div class="glass-card p-8 rounded-xl hover-lift">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-purple-100 text-purple-600 mr-4">
+                                <i class="fas fa-chart-line text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold">为什么选择成为超级个体？</h3>
+                        </div>
+                        <ul class="text-gray-600 space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>打破收入天花板，通过多元化变现方式实现财务自由</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>工作时间和地点的灵活性，实现工作与生活的平衡</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>个人技能和兴趣的充分发挥，提高职业满足感</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>建立个人品牌和影响力，创造长期价值</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="neomorphic p-8 rounded-xl mb-16">
+                    <h2 class="text-3xl font-bold mb-8 text-center">超级个体的核心能力</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-pen-fancy text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">内容创作能力</h3>
+                            <p class="text-gray-600">
+                                能够创造高质量、有价值的内容，包括文字、视频、音频等多种形式
+                            </p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-green-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">社群运营能力</h3>
+                            <p class="text-gray-600">
+                                能够建立和维护粉丝社群，创造互动和信任，形成稳定的受众基础
+                            </p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-store text-purple-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">商业变现能力</h3>
+                            <p class="text-gray-600">
+                                能够将个人影响力转化为多元收入，包括知识付费、电商、广告等
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold mb-8 text-center">超级个体发展趋势</h2>
+                    
+                    <div id="trends-chart" class="w-full h-80 mb-6"></div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="glass-card p-6 rounded-xl">
+                            <h3 class="text-xl font-bold mb-4">行业趋势</h3>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-arrow-trend-up text-blue-500 mt-1 mr-2"></i>
+                                    <span>2025年，自由职业者和超级个体在全球劳动力市场的占比预计将达到40%以上</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-arrow-trend-up text-blue-500 mt-1 mr-2"></i>
+                                    <span>内容创作平台和工具的普及，降低了创作门槛，提高了创作效率</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-arrow-trend-up text-blue-500 mt-1 mr-2"></i>
+                                    <span>AI辅助创作工具的兴起，使个体创作者能够产出更高质量、更多样化的内容</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="glass-card p-6 rounded-xl">
+                            <h3 class="text-xl font-bold mb-4">收入趋势</h3>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-arrow-trend-up text-green-500 mt-1 mr-2"></i>
+                                    <span>多元化收入结构成为主流，单一收入来源的风险逐渐被认识</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-arrow-trend-up text-green-500 mt-1 mr-2"></i>
+                                    <span>知识付费市场持续扩大，优质内容创作者的变现能力不断提升</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-arrow-trend-up text-green-500 mt-1 mr-2"></i>
+                                    <span>个人IP价值凸显，IP衍生品和周边产品成为重要收入来源</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#media" class="text-gray-400 hover:text-indigo-600 transition-colors">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+            
+            <script>
+                // 视差滚动效果
+                document.addEventListener('DOMContentLoaded', function() {
+                    const parallaxLayers = document.querySelectorAll('.parallax-layer');
+                    
+                    window.addEventListener('scroll', function() {
+                        const scrollY = window.scrollY;
+                        
+                        parallaxLayers.forEach(layer => {
+                            const depth = layer.getAttribute('data-depth');
+                            const movement = -(scrollY * depth);
+                            layer.style.transform = `translate3d(0, ${movement}px, 0)`;
+                        });
+                    });
+                    
+                    // 趋势图表
+                    const trendsChart = echarts.init(document.getElementById('trends-chart'));
+                    
+                    const option = {
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['传统就业', '自由职业', '超级个体']
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['2020', '2021', '2022', '2023', '2024', '2025']
+                        },
+                        yAxis: {
+                            type: 'value',
+                            name: '占比 (%)'
+                        },
+                        series: [
+                            {
+                                name: '传统就业',
+                                type: 'line',
+                                data: [75, 72, 68, 65, 62, 58],
+                                lineStyle: {
+                                    color: '#64748b'
+                                },
+                                itemStyle: {
+                                    color: '#64748b'
+                                }
+                            },
+                            {
+                                name: '自由职业',
+                                type: 'line',
+                                data: [20, 22, 25, 27, 28, 30],
+                                lineStyle: {
+                                    color: '#3b82f6'
+                                },
+                                itemStyle: {
+                                    color: '#3b82f6'
+                                }
+                            },
+                            {
+                                name: '超级个体',
+                                type: 'line',
+                                data: [5, 6, 7, 8, 10, 12],
+                                lineStyle: {
+                                    color: '#8b5cf6'
+                                },
+                                itemStyle: {
+                                    color: '#8b5cf6'
+                                }
+                            }
+                        ]
+                    };
+                    
+                    trendsChart.setOption(option);
+                    
+                    // 响应窗口大小变化
+                    window.addEventListener('resize', function() {
+                        trendsChart.resize();
+                    });
+                });
+            </script>
+        </section>
+        <section id="media" class="py-16 bg-gradient-to-br from-blue-50 to-indigo-100" data-section="media">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-indigo-800 mb-4">自媒体创作路径分析</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">探索公众号、视频创作、小说撰写等多元化自媒体形式，掌握内容创作策略和变现模式</p>
+                    <div class="w-24 h-1 bg-indigo-500 mx-auto mt-6"></div>
+                </div>
+        
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- 平台对比卡片 -->
+                    <div class="glass-card rounded-xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl">
+                        <div class="bg-indigo-600 text-white p-4">
+                            <h3 class="text-xl font-bold">公众号</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-file-alt text-indigo-500 text-2xl mr-3"></i>
+                                <span class="text-lg font-semibold">文字内容为主</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">适合深度内容和资讯，2025年新增"付费连载"功能，单篇付费文章转化率提升30%</p>
+                            <div class="border-t border-gray-200 pt-4 mt-4">
+                                <h4 class="font-bold text-gray-800 mb-2">主要变现方式</h4>
+                                <ul class="text-gray-700">
+                                    <li class="flex items-center mb-2">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        付费阅读与连载
+                                    </li>
+                                    <li class="flex items-center mb-2">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        流量主广告
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        外链推广与知识付费
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="glass-card rounded-xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl">
+                        <div class="bg-rose-600 text-white p-4">
+                            <h3 class="text-xl font-bold">视频创作</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-video text-rose-500 text-2xl mr-3"></i>
+                                <span class="text-lg font-semibold">短视频与直播</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">包括抖音、视频号等平台，算法推荐系统能精准推送内容，带货功能强大</p>
+                            <div class="border-t border-gray-200 pt-4 mt-4">
+                                <h4 class="font-bold text-gray-800 mb-2">主要变现方式</h4>
+                                <ul class="text-gray-700">
+                                    <li class="flex items-center mb-2">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        广告收入
+                                    </li>
+                                    <li class="flex items-center mb-2">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        带货佣金
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        直播打赏
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="glass-card rounded-xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl">
+                        <div class="bg-pink-600 text-white p-4">
+                            <h3 class="text-xl font-bold">小红书</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-images text-pink-500 text-2xl mr-3"></i>
+                                <span class="text-lg font-semibold">图文笔记为主</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">"社区+电商"平台，80%女性用户，精准女性流量，商业变现门槛低</p>
+                            <div class="border-t border-gray-200 pt-4 mt-4">
+                                <h4 class="font-bold text-gray-800 mb-2">主要变现方式</h4>
+                                <ul class="text-gray-700">
+                                    <li class="flex items-center mb-2">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        种草带货
+                                    </li>
+                                    <li class="flex items-center mb-2">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        平台派单
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        品牌合作
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- 平台对比图表 -->
+                <div class="neomorphic p-6 mb-16">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">自媒体平台对比分析</h3>
+                    <div id="platformComparisonChart" class="w-full h-96"></div>
+                </div>
+        
+                <!-- AI辅助创作部分 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-16">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">AI辅助内容创作</h3>
+                            <p class="text-gray-600 mb-6">2025年，AI工具已成为自媒体创作者的得力助手，大幅提升创作效率和内容质量</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="bg-indigo-100 rounded-full p-2 mr-4">
+                                        <i class="fas fa-magic text-indigo-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">爆款标题生成</h4>
+                                        <p class="text-gray-600">AI可批量生成吸引眼球的标题，提高点击率</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-indigo-100 rounded-full p-2 mr-4">
+                                        <i class="fas fa-pen-fancy text-indigo-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">内容框架搭建</h4>
+                                        <p class="text-gray-600">快速生成文章结构，提供创作思路</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-indigo-100 rounded-full p-2 mr-4">
+                                        <i class="fas fa-sync-alt text-indigo-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">模态转换</h4>
+                                        <p class="text-gray-600">将文字转为音频、视频，实现内容多形态分发</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-1/2">
+                            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg p-6 text-white">
+                                <h4 class="text-xl font-bold mb-4">AI创作效率提升数据</h4>
+                                <div id="aiEfficiencyChart" class="w-full h-64"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- 内容创作策略 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gradient-to-br from-indigo-50 to-blue-100 rounded-xl p-6 hover-lift">
+                        <h3 class="text-2xl font-bold text-indigo-800 mb-4">内容创作策略</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">1</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">垂直领域深耕</h4>
+                                    <p class="text-gray-600">选择特定领域，建立专业形象，提高内容价值和变现能力</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">2</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">多平台矩阵布局</h4>
+                                    <p class="text-gray-600">根据内容特点选择适合的平台，实现内容的多渠道分发</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">3</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">内容差异化</h4>
+                                    <p class="text-gray-600">避开红海竞争，寻找蓝海机会，打造独特内容风格</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-rose-50 to-pink-100 rounded-xl p-6 hover-lift">
+                        <h3 class="text-2xl font-bold text-rose-800 mb-4">变现模式创新</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="bg-rose-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">1</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">知识付费升级</h4>
+                                    <p class="text-gray-600">从单篇付费到系统课程，提高客单价和复购率</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-rose-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">2</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">私域流量运营</h4>
+                                    <p class="text-gray-600">将平台粉丝引导至私域，提高用户黏性和变现效率</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-rose-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">3</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">IP衍生品开发</h4>
+                                    <p class="text-gray-600">基于个人IP开发周边产品，实现多元化收入</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // 平台对比图表
+                    const platformComparisonChart = echarts.init(document.getElementById('platformComparisonChart'));
+                    
+                    const platformOption = {
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['内容创作难度', '变现能力', '用户增长潜力', '竞争程度']
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['公众号', '视频号', '抖音', '小红书', '知乎', '小说平台']
+                        },
+                        yAxis: {
+                            type: 'value',
+                            max: 100
+                        },
+                        series: [
+                            {
+                                name: '内容创作难度',
+                                type: 'bar',
+                                stack: 'total',
+                                emphasis: {
+                                    focus: 'series'
+                                },
+                                data: [65, 75, 80, 60, 70, 85],
+                                itemStyle: {
+                                    color: '#4f46e5'
+                                }
+                            },
+                            {
+                                name: '变现能力',
+                                type: 'bar',
+                                stack: 'total',
+                                emphasis: {
+                                    focus: 'series'
+                                },
+                                data: [70, 85, 90, 75, 65, 60],
+                                itemStyle: {
+                                    color: '#10b981'
+                                }
+                            },
+                            {
+                                name: '用户增长潜力',
+                                type: 'bar',
+                                stack: 'total',
+                                emphasis: {
+                                    focus: 'series'
+                                },
+                                data: [60, 80, 85, 90, 70, 65],
+                                itemStyle: {
+                                    color: '#f59e0b'
+                                }
+                            },
+                            {
+                                name: '竞争程度',
+                                type: 'bar',
+                                stack: 'total',
+                                emphasis: {
+                                    focus: 'series'
+                                },
+                                data: [75, 80, 90, 85, 70, 65],
+                                itemStyle: {
+                                    color: '#ef4444'
+                                }
+                            }
+                        ]
+                    };
+                    
+                    platformComparisonChart.setOption(platformOption);
+                    
+                    // AI效率提升图表
+                    const aiEfficiencyChart = echarts.init(document.getElementById('aiEfficiencyChart'));
+                    
+                    const aiOption = {
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['标题创作', '内容撰写', '排版设计', '多平台分发'],
+                            axisLabel: {
+                                color: 'rgba(255, 255, 255, 0.8)'
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: 'rgba(255, 255, 255, 0.3)'
+                                }
+                            }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            name: '效率提升(%)',
+                            nameTextStyle: {
+                                color: 'rgba(255, 255, 255, 0.8)'
+                            },
+                            axisLabel: {
+                                color: 'rgba(255, 255, 255, 0.8)'
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: 'rgba(255, 255, 255, 0.3)'
+                                }
+                            },
+                            splitLine: {
+                                lineStyle: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                }
+                            }
+                        },
+                        series: [{
+                            data: [250, 180, 150, 300],
+                            type: 'line',
+                            smooth: true,
+                            lineStyle: {
+                                width: 4,
+                                color: '#ffffff'
+                            },
+                            areaStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: 'rgba(255, 255, 255, 0.5)'
+                                    }, {
+                                        offset: 1, color: 'rgba(255, 255, 255, 0.1)'
+                                    }]
+                                }
+                            },
+                            symbol: 'circle',
+                            symbolSize: 8,
+                            itemStyle: {
+                                color: '#ffffff',
+                                borderColor: '#8b5cf6',
+                                borderWidth: 2
+                            }
+                        }]
+                    };
+                    
+                    aiEfficiencyChart.setOption(aiOption);
+                    
+                    // 响应式调整
+                    window.addEventListener('resize', function() {
+                        platformComparisonChart.resize();
+                        aiEfficiencyChart.resize();
+                    });
+                });
+            </script>
+        </section>
+        <section id="community" class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50" data-section="community">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-indigo-800 mb-4">社群与电商发展分析</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">打造个人超级个体的重要一环是建立社群并实现电商变现，让我们深入分析各大平台特点与运营策略</p>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto mt-6"></div>
+                </div>
+        
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                    <div class="glass-card rounded-xl p-8 hover-lift transition-all duration-300">
+                        <h3 class="text-2xl font-bold text-indigo-700 mb-6">电商平台对比分析</h3>
+                        <div id="platform-chart" class="w-full h-80 mb-6"></div>
+                        <p class="text-gray-700 mb-4">2025年电商格局已形成多元化竞争态势，各平台各具特色。选择适合自己的平台对超级个体至关重要。</p>
+                        <div class="flex justify-end">
+                            <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                <span>了解更多</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+        
+                    <div class="glass-card rounded-xl p-8 hover-lift transition-all duration-300">
+                        <h3 class="text-2xl font-bold text-indigo-700 mb-6">私域流量与社群运营</h3>
+                        <div class="relative overflow-hidden rounded-lg mb-6">
+                            <img src="https://www.redcao.com/wp-content/uploads/2024/06/image-1427.jpg" alt="社群运营示意图" class="w-full h-auto rounded-lg transition-transform duration-500 hover:scale-105">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-indigo-900 to-transparent p-4">
+                                <p class="text-white font-medium">2025年私域流量五大趋势</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">私域流量是指个人账号中所沉淀的粉丝、客户，其特点是可直接触达、反复利用，是超级个体的核心资产。</p>
+                        <div class="flex justify-end">
+                            <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                <span>了解更多</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-16">
+                    <div class="neomorphic p-6 hover-lift transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-book text-red-500 text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">小红书</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">社区+电商平台，女性用户占比70%，95后占比50%，适合生活方式类产品。</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">种草笔记</span>
+                            <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">图文为主</span>
+                            <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">一二线城市</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <p>✓ 适合美妆、服饰、生活方式类产品</p>
+                            <p>✓ 内容+社区+电商模式</p>
+                            <p>✓ 种草转化率高</p>
+                        </div>
+                    </div>
+        
+                    <div class="neomorphic p-6 hover-lift transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-music text-blue-500 text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">抖音</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">内容+货架模式，新一线&低线年轻女性用户为主，短视频带货效率高。</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">短视频</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">直播带货</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">算法推荐</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <p>✓ 适合快消品、服饰、美妆</p>
+                            <p>✓ 视频内容+直播带货</p>
+                            <p>✓ 流量获取成本较低</p>
+                        </div>
+                    </div>
+        
+                    <div class="neomorphic p-6 hover-lift transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-shopping-bag text-orange-500 text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">淘宝/天猫</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">传统电商平台，用户覆盖面广，搜索+推荐模式，适合多品类经营。</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm">搜索为主</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm">直播带货</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm">全品类</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <p>✓ 适合标品、品牌产品</p>
+                            <p>✓ 搜索+直播+内容</p>
+                            <p>✓ 用户购买意向强</p>
+                        </div>
+                    </div>
+        
+                    <div class="neomorphic p-6 hover-lift transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-recycle text-green-500 text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">闲鱼</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">二手交易平台，30岁以下年轻人占比49.4%，适合闲置物品和虚拟资源交易。</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">二手交易</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">年轻用户</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">虚拟资源</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <p>✓ 适合闲置物品、虚拟资源</p>
+                            <p>✓ 社区+交易模式</p>
+                            <p>✓ 高消费能力群体占比高</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="glass-card rounded-xl p-8 mb-16">
+                    <h3 class="text-2xl font-bold text-indigo-700 mb-6">2025年社群运营与电商变现趋势</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-lg p-6 shadow-md hover-lift transition-all duration-300">
+                            <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center mb-4 mx-auto">
+                                <i class="fas fa-network-wired text-indigo-600 text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-center mb-4">全渠道融合</h4>
+                            <p class="text-gray-600 text-center">打破公域与私域界限，提供无缝体验，实现全域数据打通和用户精准触达。</p>
+                        </div>
+        
+                        <div class="bg-white rounded-lg p-6 shadow-md hover-lift transition-all duration-300">
+                            <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4 mx-auto">
+                                <i class="fas fa-user-friends text-purple-600 text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-center mb-4">KOC崛起</h4>
+                            <p class="text-gray-600 text-center">关键意见消费者成为口碑传播新动力，真实体验分享带来更高转化率。</p>
+                        </div>
+        
+                        <div class="bg-white rounded-lg p-6 shadow-md hover-lift transition-all duration-300">
+                            <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4 mx-auto">
+                                <i class="fas fa-robot text-blue-600 text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-center mb-4">AI赋能运营</h4>
+                            <p class="text-gray-600 text-center">智能化提升运营效率，个性化推荐提高转化率，自动化内容生成降低运营成本。</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="neomorphic p-8">
+                    <h3 class="text-2xl font-bold text-indigo-700 mb-6">社群运营与电商变现的结合策略</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="timeline-item">
+                                <h4 class="text-xl font-bold text-gray-800 mb-2">建立私域流量池</h4>
+                                <p class="text-gray-600">将公域平台粉丝引导至私域渠道（微信群、公众号、小程序），建立直接触达通道。</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-xl font-bold text-gray-800 mb-2">精细化用户分层</h4>
+                                <p class="text-gray-600">根据用户行为、兴趣、消费能力等维度进行分层，实现精准营销和个性化服务。</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-xl font-bold text-gray-800 mb-2">内容价值提升</h4>
+                                <p class="text-gray-600">提供高质量、专业化内容，建立专业形象和信任关系，为后续变现奠定基础。</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="timeline-item">
+                                <h4 class="text-xl font-bold text-gray-800 mb-2">多元化变现模式</h4>
+                                <p class="text-gray-600">结合内容付费、电商销售、会员服务、广告合作等多种方式，实现收入多元化。</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-xl font-bold text-gray-800 mb-2">社群活跃度维护</h4>
+                                <p class="text-gray-600">通过定期活动、互动话题、福利抽奖等方式，保持社群活跃度和用户黏性。</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-xl font-bold text-gray-800 mb-2">数据驱动决策</h4>
+                                <p class="text-gray-600">建立完善的数据分析体系，通过用户行为数据指导产品开发和营销策略调整。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // 平台对比图表
+                    var platformChart = echarts.init(document.getElementById('platform-chart'));
+                    
+                    var option = {
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['女性用户占比', '年轻用户占比', '转化率指数', '运营难度']
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['小红书', '抖音', '淘宝', '闲鱼']
+                        },
+                        yAxis: {
+                            type: 'value',
+                            max: 100
+                        },
+                        series: [
+                            {
+                                name: '女性用户占比',
+                                type: 'bar',
+                                data: [70, 65, 55, 45],
+                                itemStyle: {
+                                    color: '#f87171'
+                                }
+                            },
+                            {
+                                name: '年轻用户占比',
+                                type: 'bar',
+                                data: [85, 75, 50, 65],
+                                itemStyle: {
+                                    color: '#60a5fa'
+                                }
+                            },
+                            {
+                                name: '转化率指数',
+                                type: 'bar',
+                                data: [75, 85, 70, 60],
+                                itemStyle: {
+                                    color: '#34d399'
+                                }
+                            },
+                            {
+                                name: '运营难度',
+                                type: 'bar',
+                                data: [60, 75, 80, 50],
+                                itemStyle: {
+                                    color: '#a78bfa'
+                                }
+                            }
+                        ]
+                    };
+                    
+                    platformChart.setOption(option);
+                    
+                    // 响应式调整
+                    window.addEventListener('resize', function() {
+                        platformChart.resize();
+                    });
+                });
+            </script>
+        </section>
+        <section id="freelance" class="py-20 bg-gray-50" data-section="freelance">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">接单工作机会分析</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">探索适合自由职业者的接单平台、工作类型及如何保障稳定收入</p>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto mt-6"></div>
+                </div>
+        
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                    <div class="glass-card p-8 rounded-xl hover-lift">
+                        <div class="flex items-center mb-6">
+                            <img src="https://picx.zhimg.com/v2-8e05b294757af2946303194c4306b85b_1440w.jpg" alt="接单平台" class="w-16 h-16 object-cover rounded-full mr-4">
+                            <h3 class="text-2xl font-bold text-gray-800">全球接单平台分析</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">2025年，全球自由职业市场规模已突破1.5万亿美元，接单平台成为连接自由职业者与雇主的重要桥梁。</p>
+                        
+                        <div id="platform-chart" class="w-full h-80 mb-6"></div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <span class="text-indigo-600 mr-2"><i class="fas fa-check-circle text-xl"></i></span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">国际平台</h4>
+                                    <p class="text-gray-600">Upwork、Fiverr、Toptal、Freelancer等平台提供全球化工作机会，支付保障更完善</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-indigo-600 mr-2"><i class="fas fa-check-circle text-xl"></i></span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">国内平台</h4>
+                                    <p class="text-gray-600">猪八戒、程序员客栈、U客直谈等平台更适合国内自由职业者，沟通无障碍</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-indigo-600 mr-2"><i class="fas fa-check-circle text-xl"></i></span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">垂直领域平台</h4>
+                                    <p class="text-gray-600">设计类（站酷）、开发类（码市）、写作类（中国赏金写手网）等垂直平台更专业</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="neomorphic p-8 rounded-xl hover-lift">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">自由职业工作类型</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-white p-5 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-3">
+                                    <span class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-laptop-code text-blue-600"></i>
+                                    </span>
+                                    <h4 class="font-semibold">技术开发</h4>
+                                </div>
+                                <p class="text-sm text-gray-600">网站开发、APP开发、小程序开发、系统集成</p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-3">
+                                    <span class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-paint-brush text-purple-600"></i>
+                                    </span>
+                                    <h4 class="font-semibold">创意设计</h4>
+                                </div>
+                                <p class="text-sm text-gray-600">UI设计、平面设计、插画设计、品牌设计</p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-3">
+                                    <span class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-pen-fancy text-green-600"></i>
+                                    </span>
+                                    <h4 class="font-semibold">内容创作</h4>
+                                </div>
+                                <p class="text-sm text-gray-600">文案写作、内容编辑、翻译、视频制作</p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-3">
+                                    <span class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-chart-line text-yellow-600"></i>
+                                    </span>
+                                    <h4 class="font-semibold">营销推广</h4>
+                                </div>
+                                <p class="text-sm text-gray-600">SEO优化、社媒运营、市场调研、广告投放</p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-3">
+                                    <span class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-database text-red-600"></i>
+                                    </span>
+                                    <h4 class="font-semibold">数据服务</h4>
+                                </div>
+                                <p class="text-sm text-gray-600">数据分析、数据标注、数据挖掘、报表制作</p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-3">
+                                    <span class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-comments text-indigo-600"></i>
+                                    </span>
+                                    <h4 class="font-semibold">咨询顾问</h4>
+                                </div>
+                                <p class="text-sm text-gray-600">商业咨询、法律咨询、财务顾问、教育培训</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-indigo-50 p-4 rounded-lg">
+                            <p class="text-sm text-indigo-800"><i class="fas fa-lightbulb mr-2"></i>2025年数据显示，掌握多项技能的自由职业者，收入比单一技能者高出40%以上。跨领域能力成为高收入自由职业者的共同特点。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden mb-16">
+                    <div class="grid grid-cols-1 md:grid-cols-3">
+                        <div class="bg-indigo-600 p-8 text-white">
+                            <h3 class="text-2xl font-bold mb-6">平台选择策略</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2 mt-1"><i class="fas fa-check-circle"></i></span>
+                                    <p>根据自身技能和目标市场选择合适平台</p>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2 mt-1"><i class="fas fa-check-circle"></i></span>
+                                    <p>多平台注册，分散风险，增加曝光</p>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2 mt-1"><i class="fas fa-check-circle"></i></span>
+                                    <p>国际平台收费高但项目质量好，国内平台沟通便利</p>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2 mt-1"><i class="fas fa-check-circle"></i></span>
+                                    <p>垂直平台专业度高，通用平台机会多</p>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2 mt-1"><i class="fas fa-check-circle"></i></span>
+                                    <p>关注平台的支付保障和争议解决机制</p>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-span-2 p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">保障稳定收入的策略</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="border border-gray-200 rounded-lg p-5">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                            <i class="fas fa-users text-blue-600 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-lg font-semibold">建立长期客户关系</h4>
+                                    </div>
+                                    <p class="text-gray-600">将一次性客户转化为长期合作伙伴，提供持续性服务，获取稳定收入来源。数据显示，80%的收入来自20%的客户。</p>
+                                </div>
+                                
+                                <div class="border border-gray-200 rounded-lg p-5">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                            <i class="fas fa-layer-group text-green-600 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-lg font-semibold">多元收入结构</h4>
+                                    </div>
+                                    <p class="text-gray-600">结合项目收入、订阅收入、被动收入等多种收入形式，降低单一收入来源的风险，实现收入多样化。</p>
+                                </div>
+                                
+                                <div class="border border-gray-200 rounded-lg p-5">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                            <i class="fas fa-brain text-purple-600 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-lg font-semibold">技能升级与拓展</h4>
+                                    </div>
+                                    <p class="text-gray-600">持续学习新技能，提升专业深度，拓展技能广度，增强市场竞争力和议价能力，获取更高价值项目。</p>
+                                </div>
+                                
+                                <div class="border border-gray-200 rounded-lg p-5">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                                            <i class="fas fa-robot text-yellow-600 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-lg font-semibold">AI工具提效</h4>
+                                    </div>
+                                    <p class="text-gray-600">利用AI工具提高工作效率，如内容创作、代码生成、设计辅助等，实现同等时间内创造更多价值，提高时薪。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl p-8 text-white">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">提高接单效率的技巧</h3>
+                            <p class="mb-6">在竞争激烈的自由职业市场，提高接单效率是实现稳定收入的关键。以下是2025年最新的高效接单技巧：</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                        <span class="font-bold">1</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">精准定位目标客户</h4>
+                                        <p class="text-sm text-indigo-100">根据自身专长，锁定特定行业或领域的客户，提高投标精准度和成功率</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                        <span class="font-bold">2</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">打造专业个人品牌</h4>
+                                        <p class="text-sm text-indigo-100">完善个人资料，展示作品集，获取客户评价，建立专业形象和信任度</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                        <span class="font-bold">3</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">提高沟通效率</h4>
+                                        <p class="text-sm text-indigo-100">前期充分沟通需求，确认方向一致，减少后期反复修改，提高客户满意度</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                        <span class="font-bold">4</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">合理定价策略</h4>
+                                        <p class="text-sm text-indigo-100">根据项目复杂度和时间成本，选择合适的定价模式：一次性估价、按时计费或项目分成</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                        <span class="font-bold">5</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">建立工作流程模板</h4>
+                                        <p class="text-sm text-indigo-100">标准化常见工作流程，创建模板和脚本，减少重复性工作，提高工作效率</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <img src="https://chaoacademy.com/wp-content/uploads/2019/06/where-get-freelancing-jobs.png" alt="接单技巧" class="rounded-lg shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // 平台对比图表
+                    var platformChart = echarts.init(document.getElementById('platform-chart'));
+                    
+                    var platformOption = {
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['项目数量', '平均项目金额', '用户评分']
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['Upwork', 'Fiverr', '猪八戒', '程序员客栈', 'U客直谈']
+                        },
+                        yAxis: [
+                            {
+                                type: 'value',
+                                name: '数量/金额',
+                                min: 0,
+                                max: 100,
+                                interval: 20
+                            },
+                            {
+                                type: 'value',
+                                name: '评分',
+                                min: 0,
+                                max: 5,
+                                interval: 1,
+                                axisLabel: {
+                                    formatter: '{value} 分'
+                                }
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '项目数量',
+                                type: 'bar',
+                                data: [85, 90, 75, 45, 30]
+                            },
+                            {
+                                name: '平均项目金额',
+                                type: 'bar',
+                                data: [80, 40, 50, 70, 60]
+                            },
+                            {
+                                name: '用户评分',
+                                type: 'line',
+                                yAxisIndex: 1,
+                                data: [4.5, 4.3, 3.8, 4.2, 4.0],
+                                symbolSize: 8
+                            }
+                        ]
+                    };
+                    
+                    platformChart.setOption(platformOption);
+                    
+                    // 响应式调整
+                    window.addEventListener('resize', function() {
+                        platformChart.resize();
+                    });
+                });
+            </script>
+        </section>
+        <section id="physical" class="py-20 bg-gradient-to-br from-purple-50 to-indigo-50" data-section="physical">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-indigo-800 mb-4">实体化路径分析</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">从虚拟影响力到实体商业价值，打造可持续发展的个人IP生态</p>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto mt-6"></div>
+                </div>
+        
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                    <div class="glass-card rounded-xl p-8 hover-lift">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white mr-4">
+                                <i class="fas fa-store text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">周边产品开发与IP变现</h3>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6">个人IP变现是超级个体实现商业价值的重要途径，通过将个人影响力转化为实体产品和服务，创造持续性收入。</p>
+                        
+                        <div class="mb-8">
+                            <img src="https://www.guangweiblog.com/wp-content/uploads/2024/01/2024010703382857-1024x576.png" alt="个人IP变现路径图" class="w-full h-auto rounded-lg shadow-lg mb-4">
+                            <p class="text-sm text-gray-500 text-center">个人IP变现路径示意图</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white rounded-lg p-4 shadow-sm">
+                                <h4 class="font-bold text-indigo-700 mb-2">IP变现模式多元化</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>内容付费：知识付费、会员订阅、专栏付费</li>
+                                    <li>产品变现：自有品牌产品、联名产品、周边衍生品</li>
+                                    <li>授权合作：IP形象授权、内容授权、品牌合作</li>
+                                    <li>服务变现：咨询服务、定制方案、培训课程</li>
+                                    <li>广告收入：品牌推广、软文植入、直播带货</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 shadow-sm">
+                                <h4 class="font-bold text-indigo-700 mb-2">周边产品开发策略</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>从粉丝需求出发，开发与个人IP形象一致的产品</li>
+                                    <li>注重产品质量和用户体验，避免低质量产品损害IP形象</li>
+                                    <li>结合IP特色，设计独特的产品外观和包装</li>
+                                    <li>通过限量版、联名款等方式提高产品稀缺性和溢价能力</li>
+                                    <li>建立完整的产品线，覆盖不同价格带和消费场景</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="neomorphic p-8 mb-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">IP变现成功案例分析</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="bg-white rounded-lg p-4 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white mr-3">
+                                            <i class="fas fa-utensils"></i>
+                                        </div>
+                                        <h4 class="font-bold text-lg">李子柒：从网红到品牌的蜕变</h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-3">李子柒通过古风乡村生活视频积累粉丝，随后将个人IP延伸至食品、电商领域，实现了商业化突破。</p>
+                                    <ul class="list-disc pl-5 text-gray-600 text-sm">
+                                        <li>2019年推出实体"快闪店"，拓展个人品牌</li>
+                                        <li>2020年建立螺蛳粉工厂，从互联网到实体产业</li>
+                                        <li>产品线覆盖螺蛳粉、八宝粥、坚果等多个品类</li>
+                                        <li>YouTube月收入估计在300-600万之间</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-white rounded-lg p-4 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white mr-3">
+                                            <i class="fas fa-paint-brush"></i>
+                                        </div>
+                                        <h4 class="font-bold text-lg">二次元IP与"谷子经济"</h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-3">二次元IP周边市场呈爆发式增长，从2016年的53亿元增长至2023年的1023亿元，年均复合增长率达42.2%。</p>
+                                    <ul class="list-disc pl-5 text-gray-600 text-sm">
+                                        <li>2025年"谷子经济"成为IP变现主流模式</li>
+                                        <li>影视IP周边产品GMV破千万</li>
+                                        <li>近百个一线消费品牌与泛二次元IP合作</li>
+                                        <li>从联名走向周边开发，变现效率提升</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="ip-revenue-chart" class="w-full h-80 bg-white rounded-xl shadow-md p-4 mb-4"></div>
+                        <p class="text-sm text-gray-500 text-center mb-8">2020-2025年个人IP变现市场规模增长趋势</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-16">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">公司或工作室创建指南</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 hover-lift">
+                            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                                <i class="fas fa-building text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-center mb-4">注册类型选择</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white rounded p-3 shadow-sm">
+                                    <h5 class="font-bold text-blue-700">个体工商户</h5>
+                                    <p class="text-sm text-gray-600">注册简单，成本低，适合小规模经营，个人承担无限责任</p>
+                                </div>
+                                <div class="bg-white rounded p-3 shadow-sm">
+                                    <h5 class="font-bold text-blue-700">个人独资企业</h5>
+                                    <p class="text-sm text-gray-600">无注册资金限制，不缴纳企业所得税，只交个人所得税(5-35%)</p>
+                                </div>
+                                <div class="bg-white rounded p-3 shadow-sm">
+                                    <h5 class="font-bold text-blue-700">有限责任公司</h5>
+                                    <p class="text-sm text-gray-600">需最低注册资金，有限责任保护，适合团队创业和长期发展</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-6 hover-lift">
+                            <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                                <i class="fas fa-clipboard-list text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-center mb-4">注册流程</h4>
+                            <ol class="space-y-3">
+                                <li class="bg-white rounded p-3 shadow-sm">
+                                    <span class="inline-block w-6 h-6 bg-purple-600 rounded-full text-white text-center mr-2">1</span>
+                                    <span class="font-medium">准备材料</span>
+                                    <p class="text-sm text-gray-600 mt-1">身份证、手机号、名称、地址、经营范围等</p>
+                                </li>
+                                <li class="bg-white rounded p-3 shadow-sm">
+                                    <span class="inline-block w-6 h-6 bg-purple-600 rounded-full text-white text-center mr-2">2</span>
+                                    <span class="font-medium">名称核准</span>
+                                    <p class="text-sm text-gray-600 mt-1">在工商系统中申请核准企业名称</p>
+                                </li>
+                                <li class="bg-white rounded p-3 shadow-sm">
+                                    <span class="inline-block w-6 h-6 bg-purple-600 rounded-full text-white text-center mr-2">3</span>
+                                    <span class="font-medium">提交申请</span>
+                                    <p class="text-sm text-gray-600 mt-1">向工商部门提交注册申请材料</p>
+                                </li>
+                                <li class="bg-white rounded p-3 shadow-sm">
+                                    <span class="inline-block w-6 h-6 bg-purple-600 rounded-full text-white text-center mr-2">4</span>
+                                    <span class="font-medium">领取执照</span>
+                                    <p class="text-sm text-gray-600 mt-1">领取营业执照，刻制公章</p>
+                                </li>
+                                <li class="bg-white rounded p-3 shadow-sm">
+                                    <span class="inline-block w-6 h-6 bg-purple-600 rounded-full text-white text-center mr-2">5</span>
+                                    <span class="font-medium">后续登记</span>
+                                    <p class="text-sm text-gray-600 mt-1">税务登记、银行开户、社保开户等</p>
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-green-50 to-teal-50 rounded-lg p-6 hover-lift">
+                            <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                                <i class="fas fa-coins text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-center mb-4">成本与考量因素</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white rounded p-3 shadow-sm">
+                                    <h5 class="font-bold text-green-700">注册成本</h5>
+                                    <ul class="text-sm text-gray-600 list-disc pl-5">
+                                        <li>工商注册费：100-500元</li>
+                                        <li>代办服务费：800-3000元</li>
+                                        <li>刻章费用：约300-500元</li>
+                                        <li>总成本：约500-1500元</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white rounded p-3 shadow-sm">
+                                    <h5 class="font-bold text-green-700">场地选择</h5>
+                                    <ul class="text-sm text-gray-600 list-disc pl-5">
+                                        <li>共享办公空间：灵活性高，成本可控</li>
+                                        <li>创业孵化器：提供配套服务和资源</li>
+                                        <li>自租办公室：自主性强，适合团队扩张</li>
+                                        <li>虚拟注册地址：仅用于工商注册</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white rounded p-3 shadow-sm">
+                                    <h5 class="font-bold text-green-700">运营考量</h5>
+                                    <ul class="text-sm text-gray-600 list-disc pl-5">
+                                        <li>记账报税：月均300-800元</li>
+                                        <li>社保缴纳：根据当地标准</li>
+                                        <li>年度审计：约2000-5000元</li>
+                                        <li>经营许可：根据行业需求办理</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-indigo-900 text-white rounded-xl p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">实体化路径选择建议</h3>
+                            <p class="mb-6">根据个人超级个体的发展阶段和资源情况，选择合适的实体化路径至关重要。以下是基于不同发展阶段的建议：</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-indigo-800 rounded-lg p-4">
+                                    <h4 class="font-bold text-xl mb-2">初创期</h4>
+                                    <p class="text-indigo-100">专注于个人IP打造和内容创作，通过知识付费和数字产品实现初步变现，可注册个体工商户降低创业成本。</p>
+                                </div>
+                                
+                                <div class="bg-indigo-800 rounded-lg p-4">
+                                    <h4 class="font-bold text-xl mb-2">成长期</h4>
+                                    <p class="text-indigo-100">开发小批量周边产品测试市场，与供应商合作生产，注册个人独资企业或有限公司，建立初步的团队。</p>
+                                </div>
+                                
+                                <div class="bg-indigo-800 rounded-lg p-4">
+                                    <h4 class="font-bold text-xl mb-2">成熟期</h4>
+                                    <p class="text-indigo-100">建立完整的产品线和销售渠道，考虑自建工作室或公司，引入专业团队，实现IP的全面商业化。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div id="ip-development-chart" class="w-full h-80 bg-white rounded-xl p-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                // IP变现市场规模图表
+                document.addEventListener('DOMContentLoaded', function() {
+                    const ipRevenueChart = echarts.init(document.getElementById('ip-revenue-chart'));
+                    
+                    const option = {
+                        title: {
+                            text: '个人IP变现市场规模(2020-2025)',
+                            left: 'center',
+                            textStyle: {
+                                fontSize: 16
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            formatter: '{b}: {c}亿元'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['2020', '2021', '2022', '2023', '2024', '2025'],
+                            axisLabel: {
+                                rotate: 0
+                            }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            name: '市场规模(亿元)'
+                        },
+                        series: [
+                            {
+                                name: '市场规模',
+                                type: 'line',
+                                data: [320, 480, 650, 850, 1150, 1580],
+                                smooth: true,
+                                lineStyle: {
+                                    width: 4,
+                                    color: '#6366f1'
+                                },
+                                itemStyle: {
+                                    color: '#6366f1'
+                                },
+                                areaStyle: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                        { offset: 0, color: 'rgba(99, 102, 241, 0.6)' },
+                                        { offset: 1, color: 'rgba(99, 102, 241, 0.1)' }
+                                    ])
+                                }
+                            }
+                        ]
+                    };
+                    
+                    ipRevenueChart.setOption(option);
+                    
+                    window.addEventListener('resize', function() {
+                        ipRevenueChart.resize();
+                    });
+                });
+                
+                // IP发展阶段图表
+                document.addEventListener('DOMContentLoaded', function() {
+                    const ipDevelopmentChart = echarts.init(document.getElementById('ip-development-chart'));
+                    
+                    const option = {
+                        title: {
+                            text: '个人IP实体化发展路径',
+                            left: 'center',
+                            textStyle: {
+                                fontSize: 16,
+                                color: '#333'
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'item'
+                        },
+                        legend: {
+                            bottom: '5%',
+                            left: 'center',
+                            textStyle: {
+                                color: '#333'
+                            }
+                        },
+                        series: [
+                            {
+                                name: '实体化路径',
+                                type: 'pie',
+                                radius: ['40%', '70%'],
+                                avoidLabelOverlap: false,
+                                itemStyle: {
+                                    borderRadius: 10,
+                                    borderColor: '#fff',
+                                    borderWidth: 2
+                                },
+                                label: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    label: {
+                                        show: true,
+                                        fontSize: '18',
+                                        fontWeight: 'bold',
+                                        color: '#333'
+                                    }
+                                },
+                                labelLine: {
+                                    show: false
+                                },
+                                data: [
+                                    { value: 30, name: '数字产品', itemStyle: { color: '#6366f1' } },
+                                    { value: 25, name: '周边产品', itemStyle: { color: '#8b5cf6' } },
+                                    { value: 20, name: '授权合作', itemStyle: { color: '#ec4899' } },
+                                    { value: 15, name: '实体店铺', itemStyle: { color: '#14b8a6' } },
+                                    { value: 10, name: '品牌公司', itemStyle: { color: '#f59e0b' } }
+                                ]
+                            }
+                        ]
+                    };
+                    
+                    ipDevelopmentChart.setOption(option);
+                    
+                    window.addEventListener('resize', function() {
+                        ipDevelopmentChart.resize();
+                    });
+                });
+            </script>
+        </section>
+        <section id="integration" class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50" data-section="integration">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-indigo-800 mb-4">整合策略制定</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">将多元发展路径有机整合，实现协同效应，最大化个人价值</p>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto mt-6"></div>
+                </div>
+        
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                    <div class="glass-card p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-indigo-700 mb-6">各领域协同发展策略</h3>
+                        
+                        <div class="mb-8">
+                            <div class="flex items-start mb-4">
+                                <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">内容矩阵构建</h4>
+                                    <p class="text-gray-600">建立多平台内容矩阵，实现内容的多渠道分发与交叉引流，形成流量闭环。将同一内容根据不同平台特性进行改编，提高内容利用率。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-link"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">IP价值链延伸</h4>
+                                    <p class="text-gray-600">围绕个人IP打造完整价值链，从内容创作到产品开发，再到服务提供，形成多元变现渠道，实现IP价值最大化。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">粉丝资产转化</h4>
+                                    <p class="text-gray-600">将不同平台的粉丝资源整合到私域流量池，通过精细化运营，实现粉丝在多个业务领域的价值转化，提高用户终身价值。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">跨界合作共赢</h4>
+                                    <p class="text-gray-600">寻找互补型合作伙伴，开展跨界合作，实现资源互补和能力互补，共同开发新市场和新产品，扩大影响力和收益。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700 mb-4">协同效应案例分析</h4>
+                            <div class="mb-4">
+                                <h5 class="font-semibold text-gray-800">李子柒的多元化发展</h5>
+                                <p class="text-gray-600 text-sm">从视频创作到食品品牌，再到线下体验店，形成完整的商业闭环，各业务线相互促进，实现品牌价值最大化。</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-800">雷军的个人IP矩阵</h5>
+                                <p class="text-gray-600 text-sm">通过抖音涨粉600多万，带领小米高管团队打造个人IP矩阵，个人魅力引领企业品牌建设，实现个人IP与企业品牌的双向赋能。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-indigo-700 mb-6">避免精力分散的策略</h3>
+                        
+                        <div id="time-management-chart" class="w-full h-64 mb-8"></div>
+                        
+                        <div class="mb-8">
+                            <div class="flex items-start mb-4">
+                                <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">核心业务聚焦</h4>
+                                    <p class="text-gray-600">明确个人核心竞争力和优势领域，将主要精力投入到能创造最大价值的业务上，避免盲目扩张和跟风炒作。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">时间批量处理</h4>
+                                    <p class="text-gray-600">采用番茄工作法和时间块管理，将相似任务集中处理，减少任务切换成本，提高工作效率。根据个人生物钟特点，安排不同类型的工作。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">工具与自动化</h4>
+                                    <p class="text-gray-600">充分利用AI工具和自动化技术，将重复性工作交给工具完成，释放时间和精力专注于创造性工作和战略思考。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-user-friends"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">团队协作与外包</h4>
+                                    <p class="text-gray-600">适时引入团队成员或外包合作伙伴，将非核心任务委托给专业人士完成，保持个人精力聚焦在核心价值创造上。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700 mb-4">资源最大化利用策略</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span>建立标准化工作流程和模板，提高工作效率</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span>实施项目优先级管理，集中资源在高价值项目上</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span>定期评估各业务线表现，及时调整资源分配</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span>关注理想客户群体，避免为低价值客户消耗过多资源</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span>建立数据驱动的决策机制，优化资源配置</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="neomorphic p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-center text-indigo-700 mb-6">超级个体资源整合模型</h3>
+                    
+                    <div id="resource-integration-chart" class="w-full h-96 mb-8"></div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                        <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-brain text-blue-600 text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">知识资产整合</h4>
+                            <p class="text-gray-600">将专业知识和技能转化为可复用的内容产品，实现知识的多次变现和价值最大化。</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-network-wired text-purple-600 text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">关系资源整合</h4>
+                            <p class="text-gray-600">建立个人关系网络地图，识别关键节点和资源，实现人脉资源的战略性运用和价值创造。</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-chart-line text-green-600 text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">平台资源整合</h4>
+                            <p class="text-gray-600">整合各平台特性和流量优势，构建个人全平台矩阵，实现跨平台协同和资源互补。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // 时间管理饼图
+                    const timeManagementChart = echarts.init(document.getElementById('time-management-chart'));
+                    const timeOption = {
+                        title: {
+                            text: '超级个体时间分配建议',
+                            left: 'center'
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: '{a} <br/>{b}: {c}% ({d}%)'
+                        },
+                        legend: {
+                            orient: 'horizontal',
+                            bottom: 10,
+                            data: ['核心创作', '社群运营', '产品开发', '接单工作', '学习成长']
+                        },
+                        series: [
+                            {
+                                name: '时间分配',
+                                type: 'pie',
+                                radius: ['40%', '70%'],
+                                avoidLabelOverlap: false,
+                                itemStyle: {
+                                    borderRadius: 10,
+                                    borderColor: '#fff',
+                                    borderWidth: 2
+                                },
+                                label: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    label: {
+                                        show: true,
+                                        fontSize: '18',
+                                        fontWeight: 'bold'
+                                    }
+                                },
+                                labelLine: {
+                                    show: false
+                                },
+                                data: [
+                                    { value: 40, name: '核心创作', itemStyle: { color: '#3b82f6' } },
+                                    { value: 20, name: '社群运营', itemStyle: { color: '#10b981' } },
+                                    { value: 15, name: '产品开发', itemStyle: { color: '#8b5cf6' } },
+                                    { value: 15, name: '接单工作', itemStyle: { color: '#f59e0b' } },
+                                    { value: 10, name: '学习成长', itemStyle: { color: '#ef4444' } }
+                                ]
+                            }
+                        ]
+                    };
+                    timeManagementChart.setOption(timeOption);
+                    
+                    // 资源整合关系图
+                    const resourceChart = echarts.init(document.getElementById('resource-integration-chart'));
+                    const resourceOption = {
+                        tooltip: {},
+                        legend: [
+                            {
+                                data: ['核心IP', '内容创作', '社群电商', '接单工作', '实体化']
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '资源整合模型',
+                                type: 'graph',
+                                layout: 'force',
+                                data: [
+                                    {
+                                        name: '个人IP',
+                                        value: 100,
+                                        symbolSize: 70,
+                                        category: 0,
+                                        itemStyle: { color: '#3b82f6' }
+                                    },
+                                    {
+                                        name: '公众号',
+                                        value: 60,
+                                        symbolSize: 50,
+                                        category: 1,
+                                        itemStyle: { color: '#10b981' }
+                                    },
+                                    {
+                                        name: '视频创作',
+                                        value: 60,
+                                        symbolSize: 50,
+                                        category: 1,
+                                        itemStyle: { color: '#10b981' }
+                                    },
+                                    {
+                                        name: '小说创作',
+                                        value: 40,
+                                        symbolSize: 40,
+                                        category: 1,
+                                        itemStyle: { color: '#10b981' }
+                                    },
+                                    {
+                                        name: '小红书',
+                                        value: 50,
+                                        symbolSize: 45,
+                                        category: 2,
+                                        itemStyle: { color: '#8b5cf6' }
+                                    },
+                                    {
+                                        name: '抖音店铺',
+                                        value: 50,
+                                        symbolSize: 45,
+                                        category: 2,
+                                        itemStyle: { color: '#8b5cf6' }
+                                    },
+                                    {
+                                        name: '淘宝店铺',
+                                        value: 40,
+                                        symbolSize: 40,
+                                        category: 2,
+                                        itemStyle: { color: '#8b5cf6' }
+                                    },
+                                    {
+                                        name: '技术开发',
+                                        value: 45,
+                                        symbolSize: 40,
+                                        category: 3,
+                                        itemStyle: { color: '#f59e0b' }
+                                    },
+                                    {
+                                        name: '内容创作',
+                                        value: 45,
+                                        symbolSize: 40,
+                                        category: 3,
+                                        itemStyle: { color: '#f59e0b' }
+                                    },
+                                    {
+                                        name: '咨询服务',
+                                        value: 40,
+                                        symbolSize: 35,
+                                        category: 3,
+                                        itemStyle: { color: '#f59e0b' }
+                                    },
+                                    {
+                                        name: '周边产品',
+                                        value: 40,
+                                        symbolSize: 40,
+                                        category: 4,
+                                        itemStyle: { color: '#ef4444' }
+                                    },
+                                    {
+                                        name: '工作室',
+                                        value: 45,
+                                        symbolSize: 45,
+                                        category: 4,
+                                        itemStyle: { color: '#ef4444' }
+                                    }
+                                ],
+                                links: [
+                                    { source: '个人IP', target: '公众号', value: 8 },
+                                    { source: '个人IP', target: '视频创作', value: 8 },
+                                    { source: '个人IP', target: '小说创作', value: 6 },
+                                    { source: '个人IP', target: '小红书', value: 7 },
+                                    { source: '个人IP', target: '抖音店铺', value: 7 },
+                                    { source: '个人IP', target: '淘宝店铺', value: 6 },
+                                    { source: '个人IP', target: '技术开发', value: 5 },
+                                    { source: '个人IP', target: '内容创作', value: 8 },
+                                    { source: '个人IP', target: '咨询服务', value: 6 },
+                                    { source: '个人IP', target: '周边产品', value: 7 },
+                                    { source: '个人IP', target: '工作室', value: 8 },
+                                    { source: '公众号', target: '视频创作', value: 6 },
+                                    { source: '公众号', target: '小红书', value: 5 },
+                                    { source: '视频创作', target: '抖音店铺', value: 7 },
+                                    { source: '小红书', target: '抖音店铺', value: 6 },
+                                    { source: '抖音店铺', target: '淘宝店铺', value: 5 },
+                                    { source: '内容创作', target: '公众号', value: 7 },
+                                    { source: '内容创作', target: '视频创作', value: 7 },
+                                    { source: '内容创作', target: '小说创作', value: 6 },
+                                    { source: '周边产品', target: '抖音店铺', value: 6 },
+                                    { source: '周边产品', target: '淘宝店铺', value: 6 },
+                                    { source: '工作室', target: '周边产品', value: 7 },
+                                    { source: '工作室', target: '咨询服务', value: 6 }
+                                ],
+                                categories: [
+                                    { name: '核心IP' },
+                                    { name: '内容创作' },
+                                    { name: '社群电商' },
+                                    { name: '接单工作' },
+                                    { name: '实体化' }
+                                ],
+                                roam: true,
+                                label: {
+                                    show: true,
+                                    position: 'right',
+                                    formatter: '{b}'
+                                },
+                                lineStyle: {
+                                    color: 'source',
+                                    curveness: 0.3
+                                },
+                                emphasis: {
+                                    focus: 'adjacency',
+                                    lineStyle: {
+                                        width: 10
+                                    }
+                                },
+                                force: {
+                                    repulsion: 300
+                                }
+                            }
+                        ]
+                    };
+                    resourceChart.setOption(resourceOption);
+                    
+                    // 响应式调整
+                    window.addEventListener('resize', function() {
+                        timeManagementChart.resize();
+                        resourceChart.resize();
+                    });
+                });
+            </script>
+        </section>
+        <section id="timeline" class="py-20 bg-gradient-to-r from-indigo-50 to-purple-50" data-section="timeline">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">超级个体发展时间线规划</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">科学的时间规划是超级个体成功的关键，让我们为您的发展之路制定清晰的阶段目标和行动计划</p>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto mt-6"></div>
+                </div>
+        
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                    <div class="glass-card p-8 rounded-xl hover-lift">
+                        <h3 class="text-2xl font-bold text-indigo-700 mb-6">阶段性发展模型</h3>
+                        <img src="https://pocdn.processon.com/poimg/template/fullimg_crop/667555001be80d44cc68f1a2/667e5cf4945db24b38644d7b.png" alt="超级个体发展阶段模型" class="w-full h-auto rounded-lg mb-6 shadow-lg">
+                        <p class="text-gray-700 mb-4">超级个体的发展不是一蹴而就的，而是需要经历多个阶段的积累和突破。每个阶段都有其特定的目标和挑战，通过科学规划，可以更高效地实现从零到一的跨越。</p>
+                        <p class="text-gray-700">根据研究，成功的超级个体通常经历四个关键发展阶段：探索期、成长期、稳定期和扩张期。每个阶段都需要不同的策略和资源投入。</p>
+                    </div>
+        
+                    <div class="glass-card p-8 rounded-xl hover-lift">
+                        <h3 class="text-2xl font-bold text-indigo-700 mb-6">时间规划的重要性</h3>
+                        <div id="time-management-chart" class="w-full h-64 mb-6"></div>
+                        <p class="text-gray-700 mb-4">时间是超级个体最宝贵的资源。研究表明，有明确时间规划的自由职业者，其收入水平比无规划者高出42%，工作满意度提升35%。</p>
+                        <p class="text-gray-700">科学的时间规划不仅能提高工作效率，还能帮助平衡工作与生活，避免职业倦怠，实现可持续发展。</p>
+                    </div>
+                </div>
+        
+                <div class="neomorphic p-10 rounded-2xl mb-16">
+                    <h3 class="text-3xl font-bold text-center text-gray-800 mb-10">超级个体四阶段发展路径</h3>
+                    
+                    <div class="relative">
+                        <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
+                        
+                        <div class="timeline-item ml-8 mb-16">
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h4 class="text-2xl font-bold text-blue-600 mb-3">第一阶段：探索期（0-6个月）</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-blue-800 mb-2">核心目标</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>明确个人定位和方向</li>
+                                            <li>掌握基础技能和工具</li>
+                                            <li>建立初步内容创作体系</li>
+                                            <li>获取第一批粉丝和客户</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-blue-800 mb-2">关键任务</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>选择1-2个主要平台深耕</li>
+                                            <li>每周发布3-5篇优质内容</li>
+                                            <li>学习平台算法和运营规则</li>
+                                            <li>完成首个付费项目</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-blue-800 mb-2">资源分配</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>内容创作：60%</li>
+                                            <li>技能学习：25%</li>
+                                            <li>社群互动：10%</li>
+                                            <li>商业变现：5%</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item ml-8 mb-16">
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h4 class="text-2xl font-bold text-purple-600 mb-3">第二阶段：成长期（6-18个月）</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div class="bg-purple-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-purple-800 mb-2">核心目标</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>扩大影响力和粉丝基础</li>
+                                            <li>建立多元收入来源</li>
+                                            <li>打造个人品牌特色</li>
+                                            <li>建立初步团队协作</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-purple-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-purple-800 mb-2">关键任务</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>扩展到3-4个内容平台</li>
+                                            <li>开发第一个数字产品</li>
+                                            <li>建立私域流量池</li>
+                                            <li>寻找长期合作伙伴</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-purple-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-purple-800 mb-2">资源分配</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>内容创作：40%</li>
+                                            <li>产品开发：25%</li>
+                                            <li>社群运营：20%</li>
+                                            <li>商业合作：15%</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item ml-8 mb-16">
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h4 class="text-2xl font-bold text-indigo-600 mb-3">第三阶段：稳定期（18-36个月）</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div class="bg-indigo-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-indigo-800 mb-2">核心目标</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>建立稳定的商业模式</li>
+                                            <li>实现被动收入增长</li>
+                                            <li>优化运营流程和团队</li>
+                                            <li>提升品牌影响力</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-indigo-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-indigo-800 mb-2">关键任务</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>开发完整产品线</li>
+                                            <li>建立标准化工作流程</li>
+                                            <li>组建核心团队</li>
+                                            <li>开展跨界合作</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-indigo-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-indigo-800 mb-2">资源分配</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>内容创作：30%</li>
+                                            <li>产品运营：30%</li>
+                                            <li>团队管理：20%</li>
+                                            <li>战略规划：20%</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item ml-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h4 class="text-2xl font-bold text-pink-600 mb-3">第四阶段：扩张期（36个月以上）</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div class="bg-pink-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-pink-800 mb-2">核心目标</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>实现业务规模化</li>
+                                            <li>打造完整IP生态</li>
+                                            <li>实现实体化转型</li>
+                                            <li>建立行业影响力</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-pink-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-pink-800 mb-2">关键任务</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>注册公司或工作室</li>
+                                            <li>开发实体产品和服务</li>
+                                            <li>建立多元化业务矩阵</li>
+                                            <li>探索资本合作</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-pink-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-pink-800 mb-2">资源分配</h5>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                            <li>战略决策：35%</li>
+                                            <li>业务拓展：30%</li>
+                                            <li>团队建设：25%</li>
+                                            <li>内容创作：10%</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                    <div class="glass-card p-8 rounded-xl hover-lift">
+                        <h3 class="text-2xl font-bold text-indigo-700 mb-6">90天启动计划</h3>
+                        <div id="ninety-day-chart" class="w-full h-64 mb-6"></div>
+                        <p class="text-gray-700 mb-4">超级个体的起步阶段至关重要，良好的开端能为后续发展奠定坚实基础。90天启动计划是一个高效的短期目标设定方法，帮助您快速进入状态。</p>
+                        <div class="bg-indigo-50 p-4 rounded-lg">
+                            <h5 class="font-bold text-indigo-800 mb-2">90天关键行动</h5>
+                            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                <li>第1-30天：定位探索与技能准备</li>
+                                <li>第31-60天：内容创作与平台布局</li>
+                                <li>第61-90天：初步变现与社群建设</li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <div class="glass-card p-8 rounded-xl hover-lift">
+                        <h3 class="text-2xl font-bold text-indigo-700 mb-6">高效时间管理策略</h3>
+                        <img src="https://i0.wp.com/xilejun.com/wp-content/uploads/2025/05/640-2.png?resize=1024%2C686&ssl=1" alt="超级个体时间管理" class="w-full h-auto rounded-lg mb-6 shadow-lg">
+                        <p class="text-gray-700 mb-4">时间是超级个体最宝贵的资源，科学的时间管理策略能帮助您在有限的时间内创造最大价值。</p>
+                        <div class="bg-indigo-50 p-4 rounded-lg">
+                            <h5 class="font-bold text-indigo-800 mb-2">时间管理技巧</h5>
+                            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                <li>时间块工作法：将一天分为多个专注时间块</li>
+                                <li>2-2-2-2原则：每天2小时创作、2小时学习、2小时社交、2小时思考</li>
+                                <li>能量管理：根据个人生物钟安排不同类型的工作</li>
+                                <li>批处理任务：将同类任务集中处理，减少切换成本</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="neomorphic p-10 rounded-2xl">
+                    <h3 class="text-3xl font-bold text-center text-gray-800 mb-10">可执行的行动计划</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700 mb-4">每日行动清单</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-pen-fancy text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">创作1-2小时，产出优质内容</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-comments text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">社群互动30分钟，回复评论和私信</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-book text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">学习1小时，提升专业技能</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-chart-line text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">数据分析30分钟，优化内容策略</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700 mb-4">每周行动清单</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-calendar-check text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">内容规划2小时，制定下周内容计划</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-network-wired text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">行业交流1-2次，拓展人脉资源</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-tasks text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">项目推进3-5小时，推动商业项目</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-sync-alt text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">周回顾1小时，总结经验教训</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700 mb-4">每月行动清单</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-bullseye text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">月度目标设定，制定下月KPI</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-coins text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">财务分析，优化收入结构</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-lightbulb text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">创新实验，尝试1-2个新方向</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-users text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">社群活动，组织1次线上/线下活动</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="text-xl font-bold text-indigo-700 mb-4">季度行动清单</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-search text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">市场调研，分析行业趋势和机会</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-project-diagram text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">产品规划，开发新产品或服务</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-handshake text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">合作拓展，寻找战略合作伙伴</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-graduation-cap text-indigo-600"></i>
+                                    </div>
+                                    <p class="text-gray-700">技能升级，学习1-2项新技能</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // 时间管理效率图表
+                    var timeChart = echarts.init(document.getElementById('time-management-chart'));
+                    var timeOption = {
+                        title: {
+                            text: '时间规划对超级个体的影响',
+                            left: 'center',
+                            textStyle: {
+                                color: '#333'
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['有规划', '无规划'],
+                            bottom: 0
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '15%',
+                            top: '15%',
+                            containLabel: true
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['收入水平', '工作效率', '满意度', '工作与生活平衡']
+                        },
+                        yAxis: {
+                            type: 'value',
+                            max: 100
+                        },
+                        series: [
+                            {
+                                name: '有规划',
+                                type: 'bar',
+                                data: [85, 78, 82, 75],
+                                itemStyle: {
+                                    color: '#6366f1'
+                                }
+                            },
+                            {
+                                name: '无规划',
+                                type: 'bar',
+                                data: [43, 35, 47, 32],
+                                itemStyle: {
+                                    color: '#d1d5db'
+                                }
+                            }
+                        ]
+                    };
+                    timeChart.setOption(timeOption);
+        
+                    // 90天启动计划图表
+                    var ninetyDayChart = echarts.init(document.getElementById('ninety-day-chart'));
+                    var ninetyDayOption = {
+                        title: {
+                            text: '90天启动计划时间分配',
+                            left: 'center',
+                            textStyle: {
+                                color: '#333'
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'item'
+                        },
+                        legend: {
+                            bottom: 0,
+                            left: 'center'
+                        },
+                        series: [
+                            {
+                                name: '时间分配',
+                                type: 'pie',
+                                radius: ['40%', '70%'],
+                                avoidLabelOverlap: false,
+                                itemStyle: {
+                                    borderRadius: 10,
+                                    borderColor: '#fff',
+                                    borderWidth: 2
+                                },
+                                label: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    label: {
+                                        show: true,
+                                        fontSize: '18',
+                                        fontWeight: 'bold'
+                                    }
+                                },
+                                labelLine: {
+                                    show: false
+                                },
+                                data: [
+                                    { value: 35, name: '内容创作', itemStyle: { color: '#6366f1' } },
+                                    { value: 25, name: '技能学习', itemStyle: { color: '#8b5cf6' } },
+                                    { value: 20, name: '社群运营', itemStyle: { color: '#ec4899' } },
+                                    { value: 15, name: '商业变现', itemStyle: { color: '#10b981' } },
+                                    { value: 5, name: '其他', itemStyle: { color: '#f59e0b' } }
+                                ]
+                            }
+                        ]
+                    };
+                    ninetyDayChart.setOption(ninetyDayOption);
+        
+                    // 响应窗口大小变化
+                    window.addEventListener('resize', function() {
+                        timeChart.resize();
+                        ninetyDayChart.resize();
+                    });
+                });
+            </script>
+        </section>
+        <section id="risks" class="py-20 bg-gray-50" data-section="risks">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">风险与应对策略</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">成为超级个体的道路充满挑战，提前识别风险并制定应对策略是成功的关键</p>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto mt-6"></div>
+                </div>
+        
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                    <div class="glass-card rounded-xl p-8 hover-lift transition-all duration-300">
+                        <img src="https://i0.wp.com/xilejun.com/wp-content/uploads/2025/05/640-2.png?resize=1024%2C686&ssl=1" alt="超级个体面临的风险与挑战" class="w-full h-64 object-cover rounded-lg mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">各阶段风险分析</h3>
+                        <p class="text-gray-600 mb-6">超级个体在不同发展阶段面临不同类型的风险和挑战，需要有针对性的应对策略</p>
+                        
+                        <div id="risk-chart" class="w-full h-80 mb-6"></div>
+                        
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const riskChart = echarts.init(document.getElementById('risk-chart'));
+                                
+                                const option = {
+                                    title: {
+                                        text: '超级个体各阶段风险指数',
+                                        left: 'center'
+                                    },
+                                    tooltip: {
+                                        trigger: 'axis',
+                                        axisPointer: {
+                                            type: 'shadow'
+                                        }
+                                    },
+                                    legend: {
+                                        data: ['财务风险', '职业风险', '健康风险', '法律风险'],
+                                        bottom: '0%'
+                                    },
+                                    grid: {
+                                        left: '3%',
+                                        right: '4%',
+                                        bottom: '15%',
+                                        top: '15%',
+                                        containLabel: true
+                                    },
+                                    xAxis: {
+                                        type: 'category',
+                                        data: ['探索期', '成长期', '稳定期', '扩张期']
+                                    },
+                                    yAxis: {
+                                        type: 'value',
+                                        name: '风险指数',
+                                        min: 0,
+                                        max: 100
+                                    },
+                                    series: [
+                                        {
+                                            name: '财务风险',
+                                            type: 'bar',
+                                            stack: 'total',
+                                            emphasis: {
+                                                focus: 'series'
+                                            },
+                                            data: [85, 65, 45, 60],
+                                            itemStyle: {
+                                                color: '#5470c6'
+                                            }
+                                        },
+                                        {
+                                            name: '职业风险',
+                                            type: 'bar',
+                                            stack: 'total',
+                                            emphasis: {
+                                                focus: 'series'
+                                            },
+                                            data: [70, 80, 50, 40],
+                                            itemStyle: {
+                                                color: '#91cc75'
+                                            }
+                                        },
+                                        {
+                                            name: '健康风险',
+                                            type: 'bar',
+                                            stack: 'total',
+                                            emphasis: {
+                                                focus: 'series'
+                                            },
+                                            data: [50, 70, 80, 75],
+                                            itemStyle: {
+                                                color: '#fac858'
+                                            }
+                                        },
+                                        {
+                                            name: '法律风险',
+                                            type: 'bar',
+                                            stack: 'total',
+                                            emphasis: {
+                                                focus: 'series'
+                                            },
+                                            data: [30, 50, 65, 85],
+                                            itemStyle: {
+                                                color: '#ee6666'
+                                            }
+                                        }
+                                    ]
+                                };
+                                
+                                riskChart.setOption(option);
+                                
+                                window.addEventListener('resize', function() {
+                                    riskChart.resize();
+                                });
+                            });
+                        </script>
+                    </div>
+                    
+                    <div class="neomorphic p-8 hover-lift transition-all duration-300">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">常见风险类型</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-chart-line text-indigo-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">收入不稳定风险</h4>
+                                    <p class="text-gray-600">自由职业者收入波动大，缺乏固定薪资保障，可能面临现金流断裂的风险</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-heartbeat text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">社保缺失风险</h4>
+                                    <p class="text-gray-600">缺乏企业提供的社保福利，医疗、养老等保障缺失，增加长期生活风险</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-brain text-yellow-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">技能过时风险</h4>
+                                    <p class="text-gray-600">市场需求和技术快速变化，技能不更新可能导致竞争力下降和收入减少</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-red-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-balance-scale text-red-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">法律合规风险</h4>
+                                    <p class="text-gray-600">合同纠纷、知识产权保护、税务合规等法律问题可能带来重大损失</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-user-shield text-purple-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">个人IP风险</h4>
+                                    <p class="text-gray-600">个人形象和品牌声誉管理不当可能导致IP价值受损，影响长期发展</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-16">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">各阶段风险与应对策略</h3>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="bg-indigo-100">
+                                    <th class="px-6 py-4 text-indigo-800">发展阶段</th>
+                                    <th class="px-6 py-4 text-indigo-800">主要风险</th>
+                                    <th class="px-6 py-4 text-indigo-800">应对策略</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium">探索期<br>(0-6个月)</td>
+                                    <td class="px-6 py-4">
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li>收入不稳定，现金流紧张</li>
+                                            <li>定位不清晰，方向摇摆</li>
+                                            <li>技能不足，竞争力弱</li>
+                                            <li>客户资源匮乏</li>
+                                        </ul>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li>保留部分时间工作或兼职，确保基本收入</li>
+                                            <li>建立3-6个月的应急资金</li>
+                                            <li>聚焦1-2个核心技能和平台</li>
+                                            <li>参加行业社群，扩展人脉</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium">成长期<br>(6-18个月)</td>
+                                    <td class="px-6 py-4">
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li>工作量激增，时间管理困难</li>
+                                            <li>精力分散，难以聚焦</li>
+                                            <li>合同纠纷和付款风险</li>
+                                            <li>健康问题和职业倦怠</li>
+                                        </ul>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li>建立标准化工作流程和模板</li>
+                                            <li>制定明确的客户筛选标准</li>
+                                            <li>使用正规合同，明确付款条款</li>
+                                            <li>建立健康的工作习惯和界限</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium">稳定期<br>(18-36个月)</td>
+                                    <td class="px-6 py-4">
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li>市场竞争加剧，利润空间压缩</li>
+                                            <li>创新不足，业务增长停滞</li>
+                                            <li>团队管理和沟通问题</li>
+                                            <li>税务和法律合规风险</li>
+                                        </ul>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li>开发高价值产品和服务，提高客单价</li>
+                                            <li>持续学习和创新，保持竞争优势</li>
+                                            <li>建立清晰的团队分工和沟通机制</li>
+                                            <li>咨询专业税务和法律顾问</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium">扩张期<br>(36个月以上)</td>
+                                    <td class="px-6 py-4">
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li>规模扩大带来的管理复杂性</li>
+                                            <li>品牌声誉和危机管理风险</li>
+                                            <li>资金需求增加，融资压力</li>
+                                            <li>个人与企业身份的平衡</li>
+                                        </ul>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li>建立完善的管理体系和团队</li>
+                                            <li>制定危机公关预案和应对机制</li>
+                                            <li>探索多元化融资渠道</li>
+                                            <li>明确个人IP与企业品牌的关系</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover-lift transition-all duration-300">
+                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-coins text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-4">财务风险防范</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>建立多元收入结构，分散风险</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>设立应急资金，覆盖6个月生活费</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>购买商业保险，弥补社保缺口</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>建立退休储备金，长期投资规划</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>合理税务规划，降低税务风险</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover-lift transition-all duration-300">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-file-contract text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-4">法律风险防范</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>使用标准合同模板，明确权责</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>注册商标和版权，保护知识产权</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>建立付款保障机制，如分期付款</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>购买职业责任保险，防范赔偿风险</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>定期咨询法律顾问，合规经营</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover-lift transition-all duration-300">
+                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-heartbeat text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-4">健康风险防范</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>建立健康的工作习惯和时间界限</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>定期体检和健康监测</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>购买完善的医疗保险</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>培养健康的生活方式和运动习惯</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>学习压力管理和心理健康技巧</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-indigo-700 text-white rounded-xl p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">个人IP风险管理策略</h3>
+                            <p class="mb-6">个人IP是超级个体最核心的资产，也面临着独特的风险挑战。有效的IP风险管理策略可以保护和提升IP价值。</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="bg-white p-2 rounded-full mr-3">
+                                        <i class="fas fa-shield-alt text-indigo-700"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">IP形象保护</h4>
+                                        <p class="text-indigo-200">建立清晰的个人品牌定位和价值观，保持言行一致，避免争议性内容</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-white p-2 rounded-full mr-3">
+                                        <i class="fas fa-copyright text-indigo-700"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">法律保护措施</h4>
+                                        <p class="text-indigo-200">注册商标、版权和域名，建立完善的知识产权保护体系</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-white p-2 rounded-full mr-3">
+                                        <i class="fas fa-bullhorn text-indigo-700"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">危机公关预案</h4>
+                                        <p class="text-indigo-200">制定危机应对流程，建立媒体关系网络，确保透明沟通</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-white p-2 rounded-full mr-3">
+                                        <i class="fas fa-balance-scale text-indigo-700"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">合作风险控制</h4>
+                                        <p class="text-indigo-200">谨慎选择合作伙伴，签订详细合作协议，明确IP使用范围和权益</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <img src="https://pic1.zhimg.com/v2-20f56503fdb9ef26b14bcbcd823fb2e0_1440w.jpg" alt="个人IP风险管理" class="rounded-lg shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">超级个体规划</h3>
+                    <p class="text-gray-300">从自媒体到个人IP的全面发展路径，助您实现自由职业梦想。</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#intro" class="text-gray-300 hover:text-white transition-colors">概述</a></li>
+                        <li><a href="#media" class="text-gray-300 hover:text-white transition-colors">自媒体创作</a></li>
+                        <li><a href="#community" class="text-gray-300 hover:text-white transition-colors">社群电商</a></li>
+                        <li><a href="#freelance" class="text-gray-300 hover:text-white transition-colors">接单工作</a></li>
+                        <li><a href="#physical" class="text-gray-300 hover:text-white transition-colors">实体化路径</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">联系我们</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weibo text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-bilibili text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-zhihu text-2xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-300">邮箱: contact@superindividual.com</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 超级个体规划. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // 移动菜单切换
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // 自定义光标效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursor = document.getElementById('custom-cursor');
+            
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            
+            document.addEventListener('mousedown', function() {
+                cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            });
+            
+            document.addEventListener('mouseup', function() {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            });
+            
+            const links = document.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+            });
+        });
+        
+        // 滚动监听，高亮当前导航项
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-indigo-600');
+                link.classList.add('text-gray-700');
+                
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-gray-700');
+                    link.classList.add('text-indigo-600');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,751 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美团外卖多元化品类运营指南 - 从选品到盈利的全方位攻略</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script src="https://gw.alipayobjects.com/os/lib/echarts/5.4.3/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #FFA500;
+            --accent-color: #FF4500;
+            --text-color: #333333;
+            --light-bg: #F8F9FA;
+            --dark-bg: #2C3E50;
+            --success-color: #28A745;
+            --warning-color: #FFC107;
+            --danger-color: #DC3545;
+            --info-color: #17A2B8;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link {
+            position: relative;
+            margin: 0 0.75rem;
+            padding: 0.5rem 5px;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--accent-color);
+        }
+        
+        .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: var(--dark-bg);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(255, 215, 0, 0.25);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 215, 0, 0.3);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(255, 215, 0, 0.25);
+        }
+        
+        .stat-card {
+            border-radius: 12px;
+            padding: 1.5rem;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+        }
+        
+        .footer {
+            background-color: var(--dark-bg);
+            color: white;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        .mouse-cursor-gradient-tracking {
+            position: relative;
+            background: #7983ff;
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .mouse-cursor-gradient-tracking::before {
+            --size: 0;
+            content: '';
+            position: absolute;
+            left: var(--x);
+            top: var(--y);
+            width: var(--size);
+            height: var(--size);
+            background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.3), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.2s ease, height 0.2s ease;
+        }
+        
+        .mouse-cursor-gradient-tracking:hover::before {
+            --size: 200px;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.8), rgba(255, 69, 0, 0.8)), url('https://img4.pconline.com.cn/pconline/images/best/20250411/25325157.png?wx_fmt=png&from=appmsg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .category-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar fixed w-full z-50 px-4 py-3" id="navbar">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="美团外卖多元化品类运营指南_0_报告.html" class="text-2xl font-bold flex items-center">
+                <span class="text-yellow-500"><i class="fas fa-utensils mr-2"></i>美团外卖</span>多元化品类运营指南
+            </a>
+            <div class="hidden md:flex space-x-1">
+                
+            </div>
+            <button class="md:hidden focus:outline-none" id="menu-toggle">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white w-full absolute left-0 mt-3 py-2 shadow-lg" id="mobile-menu">
+            <a href="美团外卖多元化品类运营指南_1_报告.html" class="block px-4 py-2 hover:bg-gray-100">市场概况</a>
+            <a href="美团外卖多元化品类运营指南_2_报告.html" class="block px-4 py-2 hover:bg-gray-100">超市便利店</a>
+            <a href="美团外卖多元化品类运营指南_3_报告.html" class="block px-4 py-2 bg-gray-100">宠物用品店</a>
+            <a href="美团外卖多元化品类运营指南_4_报告.html" class="block px-4 py-2 hover:bg-gray-100">情趣用品店</a>
+            <a href="美团外卖多元化品类运营指南_5_报告.html" class="block px-4 py-2 hover:bg-gray-100">文创文玩店</a>
+            <a href="美团外卖多元化品类运营指南_6_报告.html" class="block px-4 py-2 hover:bg-gray-100">数码电器店</a>
+            <a href="美团外卖多元化品类运营指南_7_报告.html" class="block px-4 py-2 hover:bg-gray-100">生鲜店</a>
+            <a href="美团外卖多元化品类运营指南_8_报告.html" class="block px-4 py-2 hover:bg-gray-100">数据分析</a>
+            <a href="美团外卖多元化品类运营指南_9_报告.html" class="block px-4 py-2 hover:bg-gray-100">营销推广</a>
+            <a href="美团外卖多元化品类运营指南_10_报告.html" class="block px-4 py-2 hover:bg-gray-100">风险管理</a>
+            <a href="美团外卖多元化品类运营指南_11_报告.html" class="block px-4 py-2 hover:bg-gray-100">成本控制</a>
+            <a href="美团外卖多元化品类运营指南_12_报告.html" class="block px-4 py-2 hover:bg-gray-100">未来趋势</a>
+            <a href="美团外卖多元化品类运营指南_13_报告.html" class="block px-4 py-2 hover:bg-gray-100">品类整合</a>
+        </div>
+        <!-- 二级导航栏 -->
+        <div class="container mx-auto hidden md:flex justify-center mt-2">
+            <div class="flex space-x-1">
+                <a href="美团外卖多元化品类运营指南_1_报告.html" class="nav-link">市场概况</a>
+                <a href="美团外卖多元化品类运营指南_2_报告.html" class="nav-link">超市便利店</a>
+                <a href="美团外卖多元化品类运营指南_3_报告.html" class="nav-link bg-red-100">宠物用品店</a>
+                <a href="美团外卖多元化品类运营指南_4_报告.html" class="nav-link">情趣用品店</a>
+                <a href="美团外卖多元化品类运营指南_5_报告.html" class="nav-link">文创文玩店</a>
+                <a href="美团外卖多元化品类运营指南_6_报告.html" class="nav-link">数码电器店</a>
+                <a href="美团外卖多元化品类运营指南_7_报告.html" class="nav-link">生鲜店</a>
+                <a href="美团外卖多元化品类运营指南_8_报告.html" class="nav-link">数据分析</a>
+                <a href="美团外卖多元化品类运营指南_9_报告.html" class="nav-link">营销推广</a>
+                <a href="美团外卖多元化品类运营指南_10_报告.html" class="nav-link">风险管理</a>
+                <a href="美团外卖多元化品类运营指南_11_报告.html" class="nav-link">成本控制</a>
+                <a href="美团外卖多元化品类运营指南_12_报告.html" class="nav-link">未来趋势</a>
+                <a href="美团外卖多元化品类运营指南_13_报告.html" class="nav-link">品类整合</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="py-20">
+<section id="pet-supplies" class="py-16 bg-gradient-to-br from-blue-50 to-purple-50" data-section="pet-supplies">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold section-title">宠物用品店运营指南</h2>
+            <p class="text-xl text-gray-600 mt-4">把握宠物经济蓝海，打造高效宠物用品外卖店</p>
+        </div>
+
+        <!-- 市场趋势分析 -->
+        <div class="mb-16">
+            <div class="flex flex-col md:flex-row items-center mb-10">
+                <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-700">宠物经济市场趋势</h3>
+                    <p class="text-gray-700 mb-4">宠物经济正在成为一条蓝海赛道，年轻人成为养宠主力军。美团数据显示，95后宠物主的占比最高，达37%。宠物用品在即时零售领域呈现"高增长、低渗透"的特点，具有巨大的发展潜力。</p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>2022年宠物商品零售市场规模约为1800亿，预计2027年将达到2760亿元</li>
+                        <li>线上渠道将达1732亿元规模，占比超60%</li>
+                        <li>美团平台上垂类宠物商家已超过3万家，包括宠物店、宠物医院等</li>
+                        <li>宠物家入驻美团闪购一周单日交易额环比增长220%</li>
+                        <li>2023年上半年，超过1000万用户在美团闪购下单购买过宠物商品</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://img.meituan.net/smartvenus/933951ee6977d836a9f0b07d91f124f71147272.jpg@1380w_80Q%7Cpr=1" alt="宠物用品店铺展示" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 宠物市场图表 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h4 class="text-xl font-semibold mb-4 text-center">宠物市场规模预测（2022-2027）</h4>
+                <div id="petMarketChart" class="w-full h-80"></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="stat-card">
+                        <div class="stat-number" id="petOwnerCounter">37%</div>
+                        <div class="stat-label">95后宠物主占比</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="petStoreCounter">3万+</div>
+                        <div class="stat-label">美团平台宠物商家数量</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="petUserCounter">1000万+</div>
+                        <div class="stat-label">闪购宠物用品用户数</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 选品策略 -->
+        <div class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 text-purple-700">科学选品策略</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-white p-6">
+                    <div class="feature-icon bg-purple-100 text-purple-600 mx-auto">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 text-center">核心品类布局</h4>
+                    <p class="text-gray-700">根据美团闪购数据分析，宠物用品店应重点布局以下核心品类：</p>
+                    <ul class="list-disc pl-5 mt-3 space-y-1 text-gray-700">
+                        <li>宠物主粮（猫粮、狗粮）：30-35%</li>
+                        <li>宠物零食：20-25%</li>
+                        <li>日常用品（猫砂、清洁用品）：15-20%</li>
+                        <li>营养保健品：10-15%</li>
+                        <li>玩具与服饰：5-10%</li>
+                    </ul>
+                </div>
+                <div class="card bg-white p-6">
+                    <div class="feature-icon bg-purple-100 text-purple-600 mx-auto">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 text-center">差异化选品</h4>
+                    <p class="text-gray-700">在竞争激烈的市场中，差异化选品是脱颖而出的关键：</p>
+                    <ul class="list-disc pl-5 mt-3 space-y-1 text-gray-700">
+                        <li>进口高端宠物食品（皇家、爱肯拿等）</li>
+                        <li>有机天然宠物食品（无谷物、无添加）</li>
+                        <li>特殊功能性产品（口腔护理、毛发护理）</li>
+                        <li>季节性产品（夏季降温、冬季保暖）</li>
+                        <li>本地特色产品（地方特产零食）</li>
+                    </ul>
+                </div>
+                <div class="card bg-white p-6">
+                    <div class="feature-icon bg-purple-100 text-purple-600 mx-auto">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 text-center">库存优化建议</h4>
+                    <p class="text-gray-700">美团闪购建议商家针对不同品类采取不同的库存策略：</p>
+                    <ul class="list-disc pl-5 mt-3 space-y-1 text-gray-700">
+                        <li>囤/补货品：猫砂、猫粮、狗粮、自动喂食器</li>
+                        <li>出行用品：航空箱、便携包、牵引绳</li>
+                        <li>高频消耗品：保持2-3周库存</li>
+                        <li>季节性产品：提前1个月备货</li>
+                        <li>爆款产品：保持充足库存，避免缺货</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 营销策略 -->
+        <div class="mb-16">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-8">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-700">场景化营销策略</h3>
+                    <p class="text-gray-700 mb-4">美团闪购宠物品类营销策略重点关注三大核心场景，通过场景化营销提升用户转化率和复购率。</p>
+                    
+                    <div class="timeline mb-6">
+                        <div class="timeline-item">
+                            <h4 class="text-xl font-semibold">宅家陪伴场景</h4>
+                            <p class="text-gray-700">针对宠物主人在家陪伴宠物的日常场景，推荐宠物玩具、互动产品、零食等，增加宠物与主人的互动乐趣。</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="text-xl font-semibold">寄养场景</h4>
+                            <p class="text-gray-700">针对宠物主人需要外出无法照顾宠物的场景，推荐自动喂食器、饮水机、监控设备等产品，解决宠物主人的后顾之忧。</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="text-xl font-semibold">携宠外出场景</h4>
+                            <p class="text-gray-700">针对宠物主人带宠物外出的场景，推荐便携包、牵引绳、外出饮水器等产品，提升外出体验。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-semibold mb-4 text-center">IP节点营销策略</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="glassmorphism p-4 text-center">
+                                <i class="fas fa-birthday-cake text-3xl text-purple-500 mb-2"></i>
+                                <h5 class="font-semibold">宠物生日</h5>
+                                <p class="text-sm text-gray-600">生日蛋糕、礼品套装</p>
+                            </div>
+                            <div class="glassmorphism p-4 text-center">
+                                <i class="fas fa-heart text-3xl text-red-500 mb-2"></i>
+                                <h5 class="font-semibold">情人节</h5>
+                                <p class="text-sm text-gray-600">情侣宠物服饰、合影道具</p>
+                            </div>
+                            <div class="glassmorphism p-4 text-center">
+                                <i class="fas fa-snowflake text-3xl text-blue-500 mb-2"></i>
+                                <h5 class="font-semibold">冬季保暖</h5>
+                                <p class="text-sm text-gray-600">宠物衣服、保暖窝垫</p>
+                            </div>
+                            <div class="glassmorphism p-4 text-center">
+                                <i class="fas fa-sun text-3xl text-yellow-500 mb-2"></i>
+                                <h5 class="font-semibold">夏季降温</h5>
+                                <p class="text-sm text-gray-600">降温垫、冰窝、冷饮</p>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <h5 class="font-semibold mb-2">品牌旗舰店策略</h5>
+                            <p class="text-gray-700">与皇家宠物食品等头部品牌合作，打造官方旗舰店，精选TOP商品，提供专业服务，增强用户信任感和品牌溢价。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 成功案例 -->
+        <div>
+            <h3 class="text-2xl font-bold mb-6 text-purple-700">成功案例分析</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card bg-white p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-store text-2xl text-purple-600"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold">宠物家</h4>
+                    </div>
+                    <p class="text-gray-700 mb-4">宠物家入驻美团闪购后，通过提供超1200种商品，涵盖主粮、零食、用品、营养保健、药品等全品类产品，一周内单日交易额环比增长220%。</p>
+                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                        <li>全品类布局策略，满足一站式购物需求</li>
+                        <li>参与美团闪购双11"超级品牌日"活动，提升品牌曝光</li>
+                        <li>通过场景化营销，精准触达目标用户</li>
+                    </ul>
+                </div>
+                <div class="card bg-white p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-paw text-2xl text-purple-600"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold">宠胖胖</h4>
+                    </div>
+                    <p class="text-gray-700 mb-4">宠胖胖创立于2019年，是一站式养宠服务平台，通过美团闪购实现线上线下一体化运营，城市合伙人已覆盖全国多个城市。</p>
+                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                        <li>线下门店矩阵生态+线上服务平台及私域闭环</li>
+                        <li>提供专业宠物知识咨询服务，增强用户粘性</li>
+                        <li>通过美团闪购实现30分钟即时配送，满足紧急需求</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 宠物市场规模预测图表
+            var petMarketChart = echarts.init(document.getElementById('petMarketChart'));
+            var petMarketOption = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['总市场规模', '线上市场规模']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['2022', '2023', '2024', '2025', '2026', '2027']
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '市场规模（亿元）'
+                },
+                series: [
+                    {
+                        name: '总市场规模',
+                        type: 'bar',
+                        data: [1800, 1950, 2100, 2300, 2500, 2760],
+                        itemStyle: {
+                            color: '#9333ea'
+                        }
+                    },
+                    {
+                        name: '线上市场规模',
+                        type: 'bar',
+                        data: [900, 1050, 1200, 1400, 1550, 1732],
+                        itemStyle: {
+                            color: '#c084fc'
+                        }
+                    },
+                    {
+                        name: '线上占比',
+                        type: 'line',
+                        yAxisIndex: 0,
+                        data: [50, 54, 57, 61, 62, 63],
+                        itemStyle: {
+                            color: '#f97316'
+                        }
+                    }
+                ]
+            };
+            petMarketChart.setOption(petMarketOption);
+
+            // 响应式调整
+            window.addEventListener('resize', function() {
+                petMarketChart.resize();
+            });
+
+            // 数字计数器动画
+            function animateCounter(elementId, targetValue) {
+                const element = document.getElementById(elementId);
+                const startValue = 0;
+                const duration = 2000;
+                const startTime = performance.now();
+                
+                function updateCounter(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    if (elapsedTime < duration) {
+                        const progress = elapsedTime / duration;
+                        let currentValue;
+                        
+                        if (elementId === 'petOwnerCounter') {
+                            currentValue = Math.floor(progress * targetValue);
+                            element.textContent = currentValue + '%';
+                        } else {
+                            currentValue = Math.floor(progress * targetValue);
+                            element.textContent = currentValue.toLocaleString() + '+';
+                        }
+                        
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        if (elementId === 'petOwnerCounter') {
+                            element.textContent = targetValue + '%';
+                        } else {
+                            element.textContent = targetValue.toLocaleString() + '+';
+                        }
+                    }
+                }
+                
+                requestAnimationFrame(updateCounter);
+            }
+
+            // 监听元素进入视口
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter('petOwnerCounter', 37);
+                        animateCounter('petStoreCounter', 30000);
+                        animateCounter('petUserCounter', 10000000);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+
+            observer.observe(document.getElementById('petMarketChart'));
+        });
+    </script>
+</section>
+</main>
+
+<!-- 页脚 -->
+<footer class="footer py-10">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">美团外卖多元化品类运营指南</h3>
+                <p class="text-gray-300 mb-4">
+                    为美团外卖商家提供全方位的多元化品类运营策略和实用建议，帮助您的外卖业务取得成功。
+                </p>
+                <div class="flex mt-4">
+                    <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-weibo"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-qq"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">品类导航</h3>
+                <ul class="space-y-2">
+                    <li><a href="美团外卖多元化品类运营指南_2_报告.html" class="text-gray-300 hover:text-white">超市便利店</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_3_报告.html" class="text-gray-300 hover:text-white">宠物用品店</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_4_报告.html" class="text-gray-300 hover:text-white">情趣用品店</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_5_报告.html" class="text-gray-300 hover:text-white">文创文玩店</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_6_报告.html" class="text-gray-300 hover:text-white">数码电器店</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_7_报告.html" class="text-gray-300 hover:text-white">生鲜店</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">运营指南</h3>
+                <ul class="space-y-2">
+                    <li><a href="美团外卖多元化品类运营指南_8_报告.html" class="text-gray-300 hover:text-white">数据分析</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_9_报告.html" class="text-gray-300 hover:text-white">营销推广</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_10_报告.html" class="text-gray-300 hover:text-white">风险管理</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_11_报告.html" class="text-gray-300 hover:text-white">成本控制</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_12_报告.html" class="text-gray-300 hover:text-white">未来趋势</a></li>
+                    <li><a href="美团外卖多元化品类运营指南_13_报告.html" class="text-gray-300 hover:text-white">品类整合</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center"><i class="fas fa-envelope mr-2 text-yellow-500"></i> <a href="mailto:contact@example.com" class="text-gray-300 hover:text-white">contact@example.com</a></li>
+                    <li class="flex items-center"><i class="fas fa-phone mr-2 text-yellow-500"></i> <a href="tel:+8610000000000" class="text-gray-300 hover:text-white">+86 10000000000</a></li>
+                    <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-yellow-500"></i> <span class="text-gray-300">北京市朝阳区</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+            <p>&copy; 2025 美团外卖多元化品类运营指南. 保留所有权利.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+        // 导航栏背景变化
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 鼠标跟随效果
+    document.addEventListener('DOMContentLoaded', () => {
+        const el = document.querySelector('.mouse-cursor-gradient-tracking');
+        if (el) {
+            el.addEventListener('mousemove', e => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                el.style.setProperty('--x', `${x}px`);
+                el.style.setProperty('--y', `${y}px`);
+            });
+        }
+    });
+</script>
+</body>
+</html>
